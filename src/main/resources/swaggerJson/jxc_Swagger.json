@@ -1,0 +1,4972 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "主数据相关接口文档",
+    "version": "1.0",
+    "title": "主数据系统",
+    "contact": {
+      "name": "mycloud"
+    }
+  },
+  "host": "47.97.154.153:8201",
+  "basePath": "/jxc",
+  "tags": [{
+    "name": "进销存-基础数据管理",
+    "description": "Agent Controller"
+  }, {
+    "name": "进销存-库存管理",
+    "description": "Jxc Warehouse In Controller"
+  }, {
+    "name": "进销存-采购管理",
+    "description": "Jxc Aog Dhdgl Controller"
+  }],
+  "paths": {
+    "/basicdata/agent/delete/{id}": {
+      "delete": {
+        "tags": ["进销存-基础数据管理"],
+        "summary": "代理商信息删除",
+        "description": "代理商信息删除",
+        "operationId": "deleteAgentBYKeyUsingDELETE_7",
+        "produces": ["*/*"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }, {
+          "name": "id",
+          "in": "path",
+          "description": "id",
+          "required": true,
+          "type": "string"
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/basicdata/agent/list": {
+      "get": {
+        "tags": ["进销存-基础数据管理"],
+        "summary": "代理商信息分页展示",
+        "description": "代理商信息分页展示",
+        "operationId": "findPageUsingGET",
+        "produces": ["*/*"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }, {
+          "name": "agenUser",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        }, {
+          "name": "agentName",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        }, {
+          "name": "agentNumber",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        }, {
+          "name": "agentTel",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        }, {
+          "name": "agentType",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        }, {
+          "name": "agentUser",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        }, {
+          "name": "dockingPeople",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        }, {
+          "name": "pageNum",
+          "in": "query",
+          "description": "当前页码",
+          "required": false,
+          "type": "integer",
+          "format": "int32"
+        }, {
+          "name": "pageSize",
+          "in": "query",
+          "description": "每页数量",
+          "required": false,
+          "type": "integer",
+          "format": "int32"
+        }, {
+          "name": "status",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/basicdata/agent/save": {
+      "post": {
+        "tags": ["进销存-基础数据管理"],
+        "summary": "代理商信息录入",
+        "description": "代理商信息录入",
+        "operationId": "saveAgentUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }, {
+          "in": "body",
+          "name": "jxcAgentAutoEntity",
+          "description": "jxcAgentAutoEntity",
+          "required": true,
+          "schema": {
+            "originalRef": "JxcAgentAutoEntity",
+            "$ref": "#/definitions/JxcAgentAutoEntity"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/basicdata/agent/update": {
+      "post": {
+        "tags": ["进销存-基础数据管理"],
+        "summary": "代理商信息修改",
+        "description": "代理商信息修改",
+        "operationId": "updateAgentByKeyUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }, {
+          "in": "body",
+          "name": "jxcAgentAutoEntity",
+          "description": "jxcAgentAutoEntity",
+          "required": true,
+          "schema": {
+            "originalRef": "JxcAgentAutoEntity",
+            "$ref": "#/definitions/JxcAgentAutoEntity"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/basicdata/express/delete/{id}": {
+      "delete": {
+        "tags": ["进销存-基础数据管理"],
+        "summary": "快递公司信息删除",
+        "description": "快递公司信息删除",
+        "operationId": "deleteExpressBYKeyUsingDELETE_7",
+        "produces": ["*/*"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }, {
+          "name": "id",
+          "in": "path",
+          "description": "id",
+          "required": true,
+          "type": "string"
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/basicdata/express/list": {
+      "get": {
+        "tags": ["进销存-基础数据管理"],
+        "summary": "快递公司信息分页展示",
+        "description": "快递公司信息分页展示",
+        "operationId": "findPageUsingGET_1",
+        "produces": ["*/*"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }, {
+          "name": "pageNum",
+          "in": "query",
+          "description": "当前页码",
+          "required": false,
+          "type": "integer",
+          "format": "int32"
+        }, {
+          "name": "pageSize",
+          "in": "query",
+          "description": "每页数量",
+          "required": false,
+          "type": "integer",
+          "format": "int32"
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/basicdata/express/save": {
+      "post": {
+        "tags": ["进销存-基础数据管理"],
+        "summary": "快递公司信息录入",
+        "description": "快递公司信息录入",
+        "operationId": "saveExpressUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }, {
+          "in": "body",
+          "name": "expressAutoEntity",
+          "description": "expressAutoEntity",
+          "required": true,
+          "schema": {
+            "originalRef": "JxcExpressAutoEntity",
+            "$ref": "#/definitions/JxcExpressAutoEntity"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/basicdata/express/update": {
+      "post": {
+        "tags": ["进销存-基础数据管理"],
+        "summary": "快递公司信息修改",
+        "description": "快递公司信息修改",
+        "operationId": "updateExpressByKeyUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }, {
+          "in": "body",
+          "name": "expressAutoEntity",
+          "description": "expressAutoEntity",
+          "required": true,
+          "schema": {
+            "originalRef": "JxcExpressAutoEntity",
+            "$ref": "#/definitions/JxcExpressAutoEntity"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/basicdata/items/delete/{id}": {
+      "delete": {
+        "tags": ["进销存-基础数据管理"],
+        "summary": "物品库信息删除",
+        "description": "物品库信息删除",
+        "operationId": "deleteAgentBYKeyUsingDELETE_15",
+        "produces": ["*/*"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }, {
+          "name": "id",
+          "in": "path",
+          "description": "id",
+          "required": true,
+          "type": "string"
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/basicdata/items/linkage/{value}": {
+      "get": {
+        "tags": ["进销存-基础数据管理"],
+        "summary": "根据供应商筛选联动数据",
+        "description": "根据供应商筛选联动数据",
+        "operationId": "findAoglinkageUsingGET",
+        "produces": ["*/*"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }, {
+          "name": "level",
+          "in": "query",
+          "description": "level",
+          "required": false,
+          "type": "integer",
+          "format": "int32"
+        }, {
+          "name": "value",
+          "in": "path",
+          "description": "value",
+          "required": true,
+          "type": "string"
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/basicdata/items/list": {
+      "get": {
+        "tags": ["进销存-基础数据管理"],
+        "summary": "物品库信息分页展示",
+        "description": "物品库信息分页展示",
+        "operationId": "findPageUsingGET_2",
+        "produces": ["*/*"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }, {
+          "name": "itemsBrand",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        }, {
+          "name": "itemsName",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        }, {
+          "name": "itemsParent1",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        }, {
+          "name": "itemsParent2",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        }, {
+          "name": "itemsParent3",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        }, {
+          "name": "itemsStatus",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        }, {
+          "name": "pageNum",
+          "in": "query",
+          "description": "当前页码",
+          "required": false,
+          "type": "integer",
+          "format": "int32"
+        }, {
+          "name": "pageSize",
+          "in": "query",
+          "description": "每页数量",
+          "required": false,
+          "type": "integer",
+          "format": "int32"
+        }, {
+          "name": "supplierId",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/basicdata/items/save": {
+      "post": {
+        "tags": ["进销存-基础数据管理"],
+        "summary": "物品库信息录入",
+        "description": "物品库信息录入",
+        "operationId": "saveAgentUsingPOST_1",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }, {
+          "in": "body",
+          "name": "jxcItemsAutoEntity",
+          "description": "jxcItemsAutoEntity",
+          "required": true,
+          "schema": {
+            "originalRef": "JxcItemsAutoEntity",
+            "$ref": "#/definitions/JxcItemsAutoEntity"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/basicdata/items/update": {
+      "post": {
+        "tags": ["进销存-基础数据管理"],
+        "summary": "物品库信息修改",
+        "description": "物品库信息修改",
+        "operationId": "updateAgentByKeyUsingPOST_1",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }, {
+          "in": "body",
+          "name": "jxcItemsAutoEntity",
+          "description": "jxcItemsAutoEntity",
+          "required": true,
+          "schema": {
+            "originalRef": "JxcItemsAutoEntity",
+            "$ref": "#/definitions/JxcItemsAutoEntity"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/basicdata/store/delete/{id}": {
+      "delete": {
+        "tags": ["进销存-基础数据管理"],
+        "summary": "电商店铺信息删除",
+        "description": "电商店铺信息删除",
+        "operationId": "deleteAgentBYKeyUsingDELETE_23",
+        "produces": ["*/*"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }, {
+          "name": "id",
+          "in": "path",
+          "description": "id",
+          "required": true,
+          "type": "string"
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/basicdata/store/list": {
+      "get": {
+        "tags": ["进销存-基础数据管理"],
+        "summary": "电商店铺分页展示",
+        "description": "电商店铺分页展示",
+        "operationId": "findPageUsingGET_7",
+        "produces": ["*/*"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }, {
+          "name": "pageNum",
+          "in": "query",
+          "description": "当前页码",
+          "required": false,
+          "type": "integer",
+          "format": "int32"
+        }, {
+          "name": "pageSize",
+          "in": "query",
+          "description": "每页数量",
+          "required": false,
+          "type": "integer",
+          "format": "int32"
+        }, {
+          "in": "String",
+          "name": "status",
+          "description": "状态",
+          "required": false,
+          "schema": {
+            "type": "string"
+          }
+        }, {
+          "in": "String",
+          "name": "storeAdmin",
+          "description": "负责人",
+          "required": false,
+          "schema": {
+            "type": "string"
+          }
+        }, {
+          "in": "String",
+          "name": "storeName",
+          "description": "电商名称",
+          "required": false,
+          "schema": {
+            "type": "string"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/basicdata/store/save": {
+      "post": {
+        "tags": ["进销存-基础数据管理"],
+        "summary": "电商店铺信息录入",
+        "description": "电商店铺信息录入",
+        "operationId": "saveAgentUsingPOST_2",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }, {
+          "in": "body",
+          "name": "jxcStoreAutoEntity",
+          "description": "jxcStoreAutoEntity",
+          "required": true,
+          "schema": {
+            "originalRef": "JxcStoreAutoEntity",
+            "$ref": "#/definitions/JxcStoreAutoEntity"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/basicdata/store/update": {
+      "post": {
+        "tags": ["进销存-基础数据管理"],
+        "summary": "电商店铺信息修改",
+        "description": "电商店铺信息修改",
+        "operationId": "updateAgentByKeyUsingPOST_2",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }, {
+          "in": "body",
+          "name": "jxcStoreAutoEntity",
+          "description": "jxcStoreAutoEntity",
+          "required": true,
+          "schema": {
+            "originalRef": "JxcStoreAutoEntity",
+            "$ref": "#/definitions/JxcStoreAutoEntity"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/basicdata/supplier/delete/{id}": {
+      "delete": {
+        "tags": ["进销存-基础数据管理"],
+        "summary": "供应商信息删除",
+        "description": "供应商信息删除",
+        "operationId": "deleteAgentBYKeyUsingDELETE_31",
+        "produces": ["*/*"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }, {
+          "name": "id",
+          "in": "path",
+          "description": "id",
+          "required": true,
+          "type": "string"
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/basicdata/supplier/detail": {
+      "get": {
+        "tags": ["进销存-基础数据管理"],
+        "summary": "供应商列表展示API",
+        "description": "供应商列表展示API",
+        "operationId": "selectDetailUsingGET",
+        "produces": ["*/*"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }, {
+          "name": "supplierCode",
+          "in": "query",
+          "description": "供应商编号",
+          "required": false,
+          "type": "string"
+        }, {
+          "name": "supplierName",
+          "in": "query",
+          "description": "供应商姓名",
+          "required": false,
+          "type": "string"
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/basicdata/supplier/list": {
+      "get": {
+        "tags": ["进销存-基础数据管理"],
+        "summary": "供应商分页展示",
+        "description": "供应商分页展示",
+        "operationId": "findPageUsingGET_8",
+        "produces": ["*/*"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }, {
+          "name": "dockingUserId",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        }, {
+          "name": "pageNum",
+          "in": "query",
+          "description": "当前页码",
+          "required": false,
+          "type": "integer",
+          "format": "int32"
+        }, {
+          "name": "pageSize",
+          "in": "query",
+          "description": "每页数量",
+          "required": false,
+          "type": "integer",
+          "format": "int32"
+        }, {
+          "name": "supplierCode",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        }, {
+          "name": "supplierName",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        }, {
+          "name": "supplierStatus",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        }, {
+          "name": "supplierTel",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        }, {
+          "name": "supplierType",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        }, {
+          "name": "supplierUsername",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/basicdata/supplier/save": {
+      "post": {
+        "tags": ["进销存-基础数据管理"],
+        "summary": "供应商信息录入",
+        "description": "供应商信息录入",
+        "operationId": "saveAgentUsingPOST_3",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }, {
+          "in": "body",
+          "name": "jxcSupplierAutoEntity",
+          "description": "jxcSupplierAutoEntity",
+          "required": true,
+          "schema": {
+            "originalRef": "JxcSupplierAutoEntity",
+            "$ref": "#/definitions/JxcSupplierAutoEntity"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/basicdata/supplier/update": {
+      "post": {
+        "tags": ["进销存-基础数据管理"],
+        "summary": "供应商信息修改",
+        "description": "供应商信息修改",
+        "operationId": "updateAgentByKeyUsingPOST_3",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }, {
+          "in": "body",
+          "name": "jxcSupplierAutoEntity",
+          "description": "jxcSupplierAutoEntity",
+          "required": true,
+          "schema": {
+            "originalRef": "JxcSupplierAutoEntity",
+            "$ref": "#/definitions/JxcSupplierAutoEntity"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/basicdata/warehouse/delete/{id}": {
+      "delete": {
+        "tags": ["进销存-基础数据管理"],
+        "summary": "仓库信息删除",
+        "description": "仓库信息删除",
+        "operationId": "deleteDepotBYKeyUsingDELETE_7",
+        "produces": ["*/*"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }, {
+          "name": "id",
+          "in": "path",
+          "description": "id",
+          "required": true,
+          "type": "string"
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/basicdata/warehouse/list": {
+      "get": {
+        "tags": ["进销存-基础数据管理"],
+        "summary": "仓库信息分页展示",
+        "description": "仓库信息分页展示",
+        "operationId": "findPageUsingGET_9",
+        "produces": ["*/*"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }, {
+          "in": "String",
+          "name": "depotName",
+          "description": "仓库名称",
+          "required": false,
+          "schema": {
+            "type": "string"
+          }
+        }, {
+          "in": "String",
+          "name": "depotStatus",
+          "description": "仓库状态",
+          "required": false,
+          "schema": {
+            "type": "string"
+          }
+        }, {
+          "in": "String",
+          "name": "orgCode",
+          "description": "所属机构",
+          "required": false,
+          "schema": {
+            "type": "string"
+          }
+        }, {
+          "name": "pageNum",
+          "in": "query",
+          "description": "当前页码",
+          "required": false,
+          "type": "integer",
+          "format": "int32"
+        }, {
+          "name": "pageSize",
+          "in": "query",
+          "description": "每页数量",
+          "required": false,
+          "type": "integer",
+          "format": "int32"
+        }, {
+          "name": "warehouseDeptId",
+          "in": "query",
+          "description": "warehouseDeptId",
+          "required": false,
+          "type": "string"
+        }, {
+          "name": "warehouseName",
+          "in": "query",
+          "description": "warehouseName",
+          "required": false,
+          "type": "string"
+        }, {
+          "name": "warehouseStatusus",
+          "in": "query",
+          "description": "warehouseStatusus",
+          "required": false,
+          "type": "string"
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/basicdata/warehouse/save": {
+      "post": {
+        "tags": ["进销存-基础数据管理"],
+        "summary": "仓库信息录入",
+        "description": "仓库信息录入",
+        "operationId": "saveAgentUsingPOST_4",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }, {
+          "in": "body",
+          "name": "jxcDepotAutoEntity",
+          "description": "jxcDepotAutoEntity",
+          "required": true,
+          "schema": {
+            "originalRef": "JxcWarehouseAutoEntity",
+            "$ref": "#/definitions/JxcWarehouseAutoEntity"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/basicdata/warehouse/update": {
+      "post": {
+        "tags": ["进销存-基础数据管理"],
+        "summary": "仓库信息修改",
+        "description": "仓库信息修改",
+        "operationId": "updateAgentByKeyUsingPOST_4",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }, {
+          "in": "body",
+          "name": "jxcDepotAutoEntity",
+          "description": "jxcDepotAutoEntity",
+          "required": true,
+          "schema": {
+            "originalRef": "JxcWarehouseAutoEntity",
+            "$ref": "#/definitions/JxcWarehouseAutoEntity"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/basicdata/waybill/delete/{id}": {
+      "delete": {
+        "tags": ["进销存-基础数据管理"],
+        "summary": "电子面单信息删除",
+        "description": "电子面单信息删除",
+        "operationId": "deleteExpressBYKeyUsingDELETE_15",
+        "produces": ["*/*"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }, {
+          "name": "id",
+          "in": "path",
+          "description": "id",
+          "required": true,
+          "type": "string"
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/basicdata/waybill/list": {
+      "get": {
+        "tags": ["进销存-基础数据管理"],
+        "summary": "电子面单信息分页展示",
+        "description": "电子面单信息分页展示",
+        "operationId": "findPageUsingGET_5",
+        "produces": ["*/*"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }, {
+          "name": "pageNum",
+          "in": "query",
+          "description": "当前页码",
+          "required": false,
+          "type": "integer",
+          "format": "int32"
+        }, {
+          "name": "pageSize",
+          "in": "query",
+          "description": "每页数量",
+          "required": false,
+          "type": "integer",
+          "format": "int32"
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/basicdata/waybill/save": {
+      "post": {
+        "tags": ["进销存-基础数据管理"],
+        "summary": "电子面单信息录入",
+        "description": "电子面单信息录入",
+        "operationId": "saveExpressUsingPOST_1",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }, {
+          "in": "body",
+          "name": "jxcExpressWaybillAutoEntity",
+          "description": "jxcExpressWaybillAutoEntity",
+          "required": true,
+          "schema": {
+            "originalRef": "JxcExpressWaybillAutoEntity",
+            "$ref": "#/definitions/JxcExpressWaybillAutoEntity"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/basicdata/waybill/update": {
+      "post": {
+        "tags": ["进销存-基础数据管理"],
+        "summary": "电子面单信息修改",
+        "description": "电子面单信息修改",
+        "operationId": "updateExpressByKeyUsingPOST_1",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }, {
+          "in": "body",
+          "name": "jxcExpressWaybillAutoEntity",
+          "description": "jxcExpressWaybillAutoEntity",
+          "required": true,
+          "schema": {
+            "originalRef": "JxcExpressWaybillAutoEntity",
+            "$ref": "#/definitions/JxcExpressWaybillAutoEntity"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/jxc/purchase/aog/detail/{id}": {
+      "get": {
+        "tags": ["进销存-采购管理"],
+        "summary": "到货单详情页",
+        "description": "到货单详情页",
+        "operationId": "findAogdetailUsingGET",
+        "produces": ["*/*"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }, {
+          "name": "id",
+          "in": "path",
+          "description": "id",
+          "required": true,
+          "type": "integer",
+          "format": "int64"
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "Result«JxcAogDetailDhdglVo»",
+              "$ref": "#/definitions/Result«JxcAogDetailDhdglVo»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/jxc/purchase/aog/list": {
+      "get": {
+        "tags": ["进销存-采购管理"],
+        "summary": "到货单分页展示",
+        "description": "到货单分页展示",
+        "operationId": "findPageUsingGET_3",
+        "produces": ["*/*"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }, {
+          "name": "aogNumber",
+          "in": "query",
+          "description": "到货单编号",
+          "required": false,
+          "type": "string"
+        }, {
+          "name": "aogTime",
+          "in": "query",
+          "description": "到货时间",
+          "required": false,
+          "type": "string"
+        }, {
+          "name": "pageNum",
+          "in": "query",
+          "description": "当前页码",
+          "required": false,
+          "type": "integer",
+          "format": "int32"
+        }, {
+          "name": "pageSize",
+          "in": "query",
+          "description": "每页数量",
+          "required": false,
+          "type": "integer",
+          "format": "int32"
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/jxc/purchase/aog/order": {
+      "get": {
+        "tags": ["进销存-采购管理"],
+        "summary": "自动生成单号",
+        "description": "自动生成单号",
+        "operationId": "ordersUsingGET",
+        "produces": ["application/json"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/jxc/purchase/aog/save": {
+      "post": {
+        "tags": ["进销存-采购管理"],
+        "summary": "到货单录入",
+        "description": "到货单录入",
+        "operationId": "addUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }, {
+          "in": "body",
+          "name": "aogDhdglVo",
+          "description": "aogDhdglVo",
+          "required": true,
+          "schema": {
+            "originalRef": "JxcAogDhdglVo",
+            "$ref": "#/definitions/JxcAogDhdglVo"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "Result",
+              "$ref": "#/definitions/Result"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/jxc/purchase/order/correlation": {
+      "post": {
+        "tags": ["进销存-采购管理"],
+        "summary": "关联到货单",
+        "description": "关联到货单",
+        "operationId": "correlationByKeyUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }, {
+          "in": "body",
+          "name": "vo",
+          "description": "vo",
+          "required": true,
+          "schema": {
+            "originalRef": "JxcpurAogVo",
+            "$ref": "#/definitions/JxcpurAogVo"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/jxc/purchase/order/correlation/{itemName}": {
+      "get": {
+        "tags": ["进销存-采购管理"],
+        "summary": "采购单关联到货单详情",
+        "description": "采购单关联到货单详情",
+        "operationId": "correlationUsingGET",
+        "produces": ["*/*"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }, {
+          "name": "itemName",
+          "in": "path",
+          "description": "itemName",
+          "required": true,
+          "type": "string"
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/jxc/purchase/order/delete/detail/{id}": {
+      "delete": {
+        "tags": ["进销存-采购管理"],
+        "summary": "采购单信息删除",
+        "description": "采购单信息删除",
+        "operationId": "deletePurDetailBYKeyUsingDELETE_7",
+        "produces": ["*/*"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }, {
+          "name": "id",
+          "in": "path",
+          "description": "id",
+          "required": true,
+          "type": "integer",
+          "format": "int64"
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/jxc/purchase/order/delete/orders/{id}": {
+      "delete": {
+        "tags": ["进销存-采购管理"],
+        "summary": "采购单删除",
+        "description": "采购单删除",
+        "operationId": "deletePurOrdersBYKeyUsingDELETE_7",
+        "produces": ["*/*"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }, {
+          "name": "id",
+          "in": "path",
+          "description": "id",
+          "required": true,
+          "type": "integer",
+          "format": "int64"
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/jxc/purchase/order/detail/{id}": {
+      "get": {
+        "tags": ["进销存-采购管理"],
+        "summary": "采购单详情页",
+        "description": "采购单详情页",
+        "operationId": "findPagedetailUsingGET",
+        "produces": ["*/*"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }, {
+          "name": "id",
+          "in": "path",
+          "description": "id",
+          "required": true,
+          "type": "integer",
+          "format": "int64"
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "Result«JxcPurCgdgDetailVo»",
+              "$ref": "#/definitions/Result«JxcPurCgdgDetailVo»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/jxc/purchase/order/list": {
+      "get": {
+        "tags": ["进销存-采购管理"],
+        "summary": "采购单分页查询",
+        "description": "采购单分页查询",
+        "operationId": "findPageUsingGET_4",
+        "produces": ["application/json"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }, {
+          "name": "applicationTime",
+          "in": "query",
+          "description": "申请日期",
+          "required": false,
+          "type": "string"
+        }, {
+          "name": "buyerTel",
+          "in": "query",
+          "description": "采购联系电话",
+          "required": false,
+          "type": "string"
+        }, {
+          "name": "buyerUser",
+          "in": "query",
+          "description": "采购人",
+          "required": false,
+          "type": "string"
+        }, {
+          "name": "consigneeAddress",
+          "in": "query",
+          "description": "收货详细地址",
+          "required": false,
+          "type": "string"
+        }, {
+          "name": "itemName",
+          "in": "query",
+          "description": "物品名称",
+          "required": false,
+          "type": "string"
+        }, {
+          "name": "pageNum",
+          "in": "query",
+          "description": "当前页码",
+          "required": false,
+          "type": "integer",
+          "format": "int32"
+        }, {
+          "name": "pageSize",
+          "in": "query",
+          "description": "每页数量",
+          "required": false,
+          "type": "integer",
+          "format": "int32"
+        }, {
+          "name": "parent1",
+          "in": "query",
+          "description": "一级类目",
+          "required": false,
+          "type": "string"
+        }, {
+          "name": "parent2",
+          "in": "query",
+          "description": "二级类目",
+          "required": false,
+          "type": "string"
+        }, {
+          "name": "parent3",
+          "in": "query",
+          "description": "三级类目",
+          "required": false,
+          "type": "string"
+        }, {
+          "name": "purchaseCode",
+          "in": "query",
+          "description": "采购编号",
+          "required": false,
+          "type": "string"
+        }, {
+          "name": "purchaseStatus",
+          "in": "query",
+          "description": "采购状态",
+          "required": false,
+          "type": "string"
+        }, {
+          "name": "purchaseType",
+          "in": "query",
+          "description": "采购类型",
+          "required": false,
+          "type": "string"
+        }, {
+          "name": "suppliercode",
+          "in": "query",
+          "description": "供应商名称",
+          "required": false,
+          "type": "string"
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/jxc/purchase/order/save": {
+      "post": {
+        "tags": ["进销存-采购管理"],
+        "summary": "采购单录入",
+        "description": "采购单录入",
+        "operationId": "addUsingPOST_1",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }, {
+          "in": "body",
+          "name": "purVo",
+          "description": "purVo",
+          "required": true,
+          "schema": {
+            "originalRef": "JxcPurCgdglVo",
+            "$ref": "#/definitions/JxcPurCgdglVo"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "Result",
+              "$ref": "#/definitions/Result"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/jxc/purchase/order/update": {
+      "post": {
+        "tags": ["进销存-采购管理"],
+        "summary": "采购单信息修改",
+        "description": "采购单信息修改",
+        "operationId": "updatePurByKeyUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }, {
+          "in": "body",
+          "name": "pruVo",
+          "description": "pruVo",
+          "required": true,
+          "schema": {
+            "originalRef": "JxcPurCgdglVo",
+            "$ref": "#/definitions/JxcPurCgdglVo"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/jxc/purchase/plan/delete/plan/{id}": {
+      "delete": {
+        "tags": ["进销存-采购管理"],
+        "summary": "采购计划删除",
+        "description": "采购计划删除",
+        "operationId": "deletePurOrdersBYKeyUsingDELETE_15",
+        "produces": ["*/*"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }, {
+          "name": "id",
+          "in": "path",
+          "description": "id",
+          "required": true,
+          "type": "integer",
+          "format": "int64"
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/jxc/purchase/plan/list": {
+      "get": {
+        "tags": ["进销存-采购管理"],
+        "summary": "采购计划分页查询",
+        "description": "采购计划分页查询",
+        "operationId": "findPageUsingGET_6",
+        "produces": ["application/json"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }, {
+          "name": "pageNum",
+          "in": "query",
+          "description": "当前页码",
+          "required": false,
+          "type": "integer",
+          "format": "int32"
+        }, {
+          "name": "pageSize",
+          "in": "query",
+          "description": "每页数量",
+          "required": false,
+          "type": "integer",
+          "format": "int32"
+        }, {
+          "name": "planCode",
+          "in": "query",
+          "description": "采购计划编号",
+          "required": false,
+          "type": "string"
+        }, {
+          "name": "planYear",
+          "in": "query",
+          "description": "计划年度",
+          "required": false,
+          "type": "string"
+        }, {
+          "name": "purType",
+          "in": "query",
+          "description": "采购计划类型",
+          "required": false,
+          "type": "string"
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/jxc/purchase/plan/save": {
+      "post": {
+        "tags": ["进销存-采购管理"],
+        "summary": "采购计划录入",
+        "description": "采购计划录入",
+        "operationId": "inBoundByItemsUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }, {
+          "in": "body",
+          "name": "vo",
+          "description": "vo",
+          "required": true,
+          "schema": {
+            "originalRef": "JxcPurPlanInsertVo",
+            "$ref": "#/definitions/JxcPurPlanInsertVo"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/jxc/purchase/plan/update": {
+      "post": {
+        "tags": ["进销存-采购管理"],
+        "summary": "采购计划信息修改",
+        "description": "采购计划信息修改",
+        "operationId": "updatePurPlanByKeyUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }, {
+          "in": "body",
+          "name": "vo",
+          "description": "vo",
+          "required": true,
+          "schema": {
+            "originalRef": "JxcPurPlanUpdateVo",
+            "$ref": "#/definitions/JxcPurPlanUpdateVo"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/jxc/purchase/refund/order": {
+      "get": {
+        "tags": ["进销存-采购管理"],
+        "summary": "自动生成退款单号",
+        "description": "自动生成退款单号",
+        "operationId": "generatedUsingGET",
+        "produces": ["application/json"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/jxc/purchase/refund/save": {
+      "post": {
+        "tags": ["进销存-采购管理"],
+        "summary": "退款单录入",
+        "description": "退款单录入",
+        "operationId": "addUsingPOST_2",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }, {
+          "in": "body",
+          "name": "insertVo",
+          "description": "insertVo",
+          "required": true,
+          "schema": {
+            "originalRef": "JxcRefundordersInsertVo",
+            "$ref": "#/definitions/JxcRefundordersInsertVo"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "Result",
+              "$ref": "#/definitions/Result"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/jxc/warehouse/inbound/books/save": {
+      "post": {
+        "tags": ["进销存-库存管理"],
+        "summary": "入库单管理-图书入库",
+        "description": "入库单管理-图书入库",
+        "operationId": "inBoundByBooksUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }, {
+          "in": "body",
+          "name": "vo",
+          "description": "vo",
+          "required": true,
+          "schema": {
+            "originalRef": "JxcWarehouseInByBooksVo",
+            "$ref": "#/definitions/JxcWarehouseInByBooksVo"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/jxc/warehouse/inbound/items/save": {
+      "post": {
+        "tags": ["进销存-库存管理"],
+        "summary": "入库单管理-办公物品入库",
+        "description": "入库单管理-办公物品入库",
+        "operationId": "inBoundByItemsUsingPOST_1",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }, {
+          "in": "body",
+          "name": "vo",
+          "description": "vo",
+          "required": true,
+          "schema": {
+            "originalRef": "JxcWarehouseInByItemsVo",
+            "$ref": "#/definitions/JxcWarehouseInByItemsVo"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/jxc/warehouse/inbound/purchase/save": {
+      "post": {
+        "tags": ["进销存-库存管理"],
+        "summary": "采购单生成到入库",
+        "description": "采购单生成到入库",
+        "operationId": "purchaseAddUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }, {
+          "in": "body",
+          "name": "vo",
+          "description": "vo",
+          "required": true,
+          "schema": {
+            "originalRef": "JxcWarehouseInVo",
+            "$ref": "#/definitions/JxcWarehouseInVo"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/jxc/warehouse/outbound/books/save": {
+      "post": {
+        "tags": ["进销存-库存管理"],
+        "summary": "出库管理-图书出库",
+        "description": "出库管理-图书出库",
+        "operationId": "inBoundByBooksUsingPOST_1",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }, {
+          "in": "body",
+          "name": "vo",
+          "description": "vo",
+          "required": true,
+          "schema": {
+            "originalRef": "JxcWarehouseOutByBooksVo",
+            "$ref": "#/definitions/JxcWarehouseOutByBooksVo"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    },
+    "/jxc/warehouse/outbound/items/save": {
+      "post": {
+        "tags": ["进销存-库存管理"],
+        "summary": "出库管理-办公物品出库",
+        "description": "出库管理-办公物品出库",
+        "operationId": "inBoundByItemsUsingPOST_2",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "description": "swagger",
+          "required": false,
+          "type": "string",
+          "default": "Bearer "
+        }, {
+          "in": "body",
+          "name": "vo",
+          "description": "vo",
+          "required": true,
+          "schema": {
+            "originalRef": "JxcWarehouseOutByItemsVo",
+            "$ref": "#/definitions/JxcWarehouseOutByItemsVo"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [{
+          "Authorization": ["global"]
+        }],
+        "deprecated": false
+      }
+    }
+  },
+  "securityDefinitions": {
+    "Authorization": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "JxcAgentAutoEntity": {
+      "type": "object",
+      "properties": {
+        "agentAddress": {
+          "type": "string"
+        },
+        "agentCode": {
+          "type": "string"
+        },
+        "agentId": {
+          "type": "string"
+        },
+        "agentName": {
+          "type": "string"
+        },
+        "agentStartTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "agentStatus": {
+          "type": "boolean"
+        },
+        "agentTel": {
+          "type": "string"
+        },
+        "agentType": {
+          "type": "string"
+        },
+        "agentUser": {
+          "type": "string"
+        },
+        "createTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "createUserId": {
+          "type": "string"
+        },
+        "createUserName": {
+          "type": "string"
+        },
+        "dockingUserId": {
+          "type": "string"
+        },
+        "dockingUserName": {
+          "type": "string"
+        },
+        "isDel": {
+          "type": "boolean"
+        },
+        "taxpayerId": {
+          "type": "string"
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updateUserId": {
+          "type": "string"
+        },
+        "updateUserName": {
+          "type": "string"
+        }
+      },
+      "title": "JxcAgentAutoEntity"
+    },
+    "JxcAogDetailDhdglVo": {
+      "type": "object",
+      "properties": {
+        "acceptorUser": {
+          "type": "string",
+          "description": "验收人"
+        },
+        "aogDetail": {
+          "type": "array",
+          "description": "到货单详情",
+          "items": {
+            "originalRef": "JxcAogDetailVo",
+            "$ref": "#/definitions/JxcAogDetailVo"
+          }
+        },
+        "aogNumber": {
+          "type": "string",
+          "description": "到货单编号"
+        },
+        "aogStatus": {
+          "type": "string",
+          "description": "到货单状态"
+        },
+        "aogTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "到货时间"
+        },
+        "aogType": {
+          "type": "boolean",
+          "description": "编码类型(0.实际单号1.自动编号)"
+        },
+        "createdTime": {
+          "type": "string",
+          "description": "创建时间"
+        },
+        "depotNumber": {
+          "type": "string",
+          "description": "到货仓库"
+        },
+        "description": {
+          "type": "string",
+          "description": "补充说明"
+        },
+        "file": {
+          "type": "string",
+          "description": "附件"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "isAog": {
+          "type": "boolean",
+          "description": "是否入库"
+        },
+        "supplierNumber": {
+          "type": "string",
+          "description": "供应商名称"
+        },
+        "updateTime": {
+          "type": "string",
+          "description": "更新时间"
+        }
+      },
+      "title": "JxcAogDetailDhdglVo"
+    },
+    "JxcAogDetailVo": {
+      "type": "object",
+      "properties": {
+        "amount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "数量"
+        },
+        "discount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "折扣"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "itemName": {
+          "type": "string",
+          "description": "资料名称"
+        },
+        "parent1": {
+          "type": "string",
+          "description": "一级类目"
+        },
+        "parent2": {
+          "type": "string",
+          "description": "二级类目"
+        },
+        "parent3": {
+          "type": "string",
+          "description": "三级类目"
+        },
+        "pricing": {
+          "type": "number",
+          "description": "定价"
+        },
+        "purId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "采购单号"
+        },
+        "totalPrice": {
+          "type": "number",
+          "description": "总价"
+        }
+      },
+      "title": "JxcAogDetailVo"
+    },
+    "JxcAogDhdglVo": {
+      "type": "object",
+      "properties": {
+        "acceptorUser": {
+          "type": "string",
+          "description": "验收人"
+        },
+        "aogDetail": {
+          "type": "array",
+          "description": "到货单详情",
+          "items": {
+            "originalRef": "JxcAogdetailDhdglAutoEntity",
+            "$ref": "#/definitions/JxcAogdetailDhdglAutoEntity"
+          }
+        },
+        "aogNumber": {
+          "type": "string",
+          "description": "到货单编号"
+        },
+        "aogStatus": {
+          "type": "string",
+          "description": "到货单状态"
+        },
+        "aogTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "到货时间"
+        },
+        "aogType": {
+          "type": "boolean",
+          "description": "编码类型(0.实际单号1.自动编号)"
+        },
+        "createdTime": {
+          "type": "string",
+          "description": "创建时间"
+        },
+        "depotNumber": {
+          "type": "string",
+          "description": "到货仓库"
+        },
+        "description": {
+          "type": "string",
+          "description": "补充说明"
+        },
+        "file": {
+          "type": "string",
+          "description": "附件"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "isAog": {
+          "type": "boolean",
+          "description": "是否入库"
+        },
+        "isDel": {
+          "type": "boolean",
+          "description": "是否删除"
+        },
+        "supplierNumber": {
+          "type": "string",
+          "description": "供应商名称"
+        },
+        "updateTime": {
+          "type": "string",
+          "description": "更新时间"
+        }
+      },
+      "title": "JxcAogDhdglVo"
+    },
+    "JxcAogdetailDhdglAutoEntity": {
+      "type": "object",
+      "properties": {
+        "amount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "数量"
+        },
+        "aogId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "关联aog主表"
+        },
+        "createdTime": {
+          "type": "string",
+          "description": "创建时间"
+        },
+        "discount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "折扣"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "isDel": {
+          "type": "boolean",
+          "description": "是否删除"
+        },
+        "itemName": {
+          "type": "string",
+          "description": "资料名称"
+        },
+        "parent1": {
+          "type": "string",
+          "description": "一级类目"
+        },
+        "parent2": {
+          "type": "string",
+          "description": "二级类目"
+        },
+        "parent3": {
+          "type": "string",
+          "description": "三级类目"
+        },
+        "pricing": {
+          "type": "number",
+          "description": "定价"
+        },
+        "totalPrice": {
+          "type": "number",
+          "description": "总价"
+        },
+        "updateTime": {
+          "type": "string",
+          "description": "更新时间"
+        }
+      },
+      "title": "JxcAogdetailDhdglAutoEntity"
+    },
+    "JxcExpressAutoEntity": {
+      "type": "object",
+      "properties": {
+        "createTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "createUserId": {
+          "type": "string"
+        },
+        "createUserName": {
+          "type": "string"
+        },
+        "deliveryman": {
+          "type": "string"
+        },
+        "deliverymanTel": {
+          "type": "string"
+        },
+        "expressAddress": {
+          "type": "string"
+        },
+        "expressCompanyCode": {
+          "type": "string"
+        },
+        "expressCompanyName": {
+          "type": "string"
+        },
+        "expressDeptId": {
+          "type": "string"
+        },
+        "expressDeptName": {
+          "type": "string"
+        },
+        "expressId": {
+          "type": "string"
+        },
+        "expressMerchantId": {
+          "type": "string"
+        },
+        "expressMerchantKey": {
+          "type": "boolean"
+        },
+        "expressMerchantStatus": {
+          "type": "boolean"
+        },
+        "expressMonthlStatement": {
+          "type": "string"
+        },
+        "expressOutletsCode": {
+          "type": "string"
+        },
+        "expressOutletsName": {
+          "type": "string"
+        },
+        "isDel": {
+          "type": "boolean"
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updateUserId": {
+          "type": "string"
+        },
+        "updateUserName": {
+          "type": "string"
+        }
+      },
+      "title": "JxcExpressAutoEntity"
+    },
+    "JxcExpressWaybillAutoEntity": {
+      "type": "object",
+      "properties": {
+        "createTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "createUserId": {
+          "type": "string"
+        },
+        "createUserName": {
+          "type": "string"
+        },
+        "expressCompanyCode": {
+          "type": "string"
+        },
+        "expressWaybillCode": {
+          "type": "string"
+        },
+        "expressWaybillId": {
+          "type": "string"
+        },
+        "expressWaybillName": {
+          "type": "string"
+        },
+        "expressWaybillSize": {
+          "type": "string"
+        },
+        "expressWaybillStatus": {
+          "type": "boolean"
+        },
+        "isDel": {
+          "type": "boolean"
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updateUserId": {
+          "type": "string"
+        },
+        "updateUserName": {
+          "type": "string"
+        }
+      },
+      "title": "JxcExpressWaybillAutoEntity"
+    },
+    "JxcItemsAutoEntity": {
+      "type": "object",
+      "properties": {
+        "createTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "createUserId": {
+          "type": "string"
+        },
+        "createUserName": {
+          "type": "string"
+        },
+        "isDel": {
+          "type": "boolean"
+        },
+        "itemsBrand": {
+          "type": "string"
+        },
+        "itemsCode": {
+          "type": "string"
+        },
+        "itemsId": {
+          "type": "string"
+        },
+        "itemsName": {
+          "type": "string"
+        },
+        "itemsOneThing": {
+          "type": "boolean"
+        },
+        "itemsParent1": {
+          "type": "string"
+        },
+        "itemsParent2": {
+          "type": "string"
+        },
+        "itemsParent3": {
+          "type": "string"
+        },
+        "itemsPrice": {
+          "type": "number"
+        },
+        "itemsSpecification": {
+          "type": "string"
+        },
+        "itemsStatus": {
+          "type": "boolean"
+        },
+        "itemsUnit": {
+          "type": "string"
+        },
+        "supplierId": {
+          "type": "string"
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updateUserId": {
+          "type": "string"
+        },
+        "updateUserName": {
+          "type": "string"
+        }
+      },
+      "title": "JxcItemsAutoEntity"
+    },
+    "JxcPurCgdgDetailVo": {
+      "type": "object",
+      "properties": {
+        "applicationtime": {
+          "type": "string",
+          "description": "申请日期"
+        },
+        "branch": {
+          "type": "string",
+          "description": "分部"
+        },
+        "buyerTel": {
+          "type": "string",
+          "description": "采购联系电话"
+        },
+        "buyerUser": {
+          "type": "string",
+          "description": "采购人"
+        },
+        "city": {
+          "type": "string",
+          "description": "收货地址-市"
+        },
+        "consigneeAddress": {
+          "type": "string",
+          "description": "收货详细地址"
+        },
+        "consigneeDescription": {
+          "type": "string",
+          "description": "收货备注信息"
+        },
+        "consigneeTel": {
+          "type": "string",
+          "description": "收货人联系方式"
+        },
+        "consigneeUser": {
+          "type": "string",
+          "description": "收货人"
+        },
+        "deptCode": {
+          "type": "string",
+          "description": "部门"
+        },
+        "district": {
+          "type": "string",
+          "description": "收货地址-区/县"
+        },
+        "file": {
+          "type": "string",
+          "description": "附件上传"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "主键"
+        },
+        "payDescription": {
+          "type": "string",
+          "description": "付款说明"
+        },
+        "payLowercase": {
+          "type": "number",
+          "description": "支付金额小写"
+        },
+        "payUppercase": {
+          "type": "string",
+          "description": "支付金额大写"
+        },
+        "province": {
+          "type": "string",
+          "description": "收货地址-省"
+        },
+        "purOrders": {
+          "type": "array",
+          "description": "采购单详情",
+          "items": {
+            "originalRef": "JxcPurordersCgdglDetailVo",
+            "$ref": "#/definitions/JxcPurordersCgdglDetailVo"
+          }
+        },
+        "purchaseCode": {
+          "type": "string",
+          "description": "采购编号"
+        },
+        "purchaseDescription": {
+          "type": "string",
+          "description": "采购说明"
+        },
+        "purchaseStatus": {
+          "type": "string",
+          "description": "采购状态"
+        },
+        "purchaseType": {
+          "type": "string",
+          "description": "采购类型"
+        },
+        "stationCode": {
+          "type": "string",
+          "description": "岗位"
+        },
+        "suppliercode": {
+          "type": "string",
+          "description": "供应商名称"
+        }
+      },
+      "title": "JxcPurCgdgDetailVo"
+    },
+    "JxcPurCgdglVo": {
+      "type": "object",
+      "properties": {
+        "applicationtime": {
+          "type": "string",
+          "description": "申请日期"
+        },
+        "branch": {
+          "type": "string",
+          "description": "分部"
+        },
+        "buyerTel": {
+          "type": "string",
+          "description": "采购联系电话"
+        },
+        "buyerUser": {
+          "type": "string",
+          "description": "采购人"
+        },
+        "city": {
+          "type": "string",
+          "description": "收货地址-市"
+        },
+        "consigneeAddress": {
+          "type": "string",
+          "description": "收货详细地址"
+        },
+        "consigneeDescription": {
+          "type": "string",
+          "description": "收货备注信息"
+        },
+        "consigneeTel": {
+          "type": "string",
+          "description": "收货人联系方式"
+        },
+        "consigneeUser": {
+          "type": "string",
+          "description": "收货人"
+        },
+        "createdTime": {
+          "type": "string",
+          "description": "创建时间"
+        },
+        "deptCode": {
+          "type": "string",
+          "description": "部门"
+        },
+        "district": {
+          "type": "string",
+          "description": "收货地址-区/县"
+        },
+        "file": {
+          "type": "string",
+          "description": "附件上传"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "主键"
+        },
+        "isDel": {
+          "type": "integer",
+          "format": "int32",
+          "description": "是否删除"
+        },
+        "payDescription": {
+          "type": "string",
+          "description": "付款说明"
+        },
+        "payLowercase": {
+          "type": "number",
+          "description": "支付金额小写"
+        },
+        "payUppercase": {
+          "type": "string",
+          "description": "支付金额大写"
+        },
+        "province": {
+          "type": "string",
+          "description": "收货地址-省"
+        },
+        "purOrders": {
+          "type": "array",
+          "description": "采购单详情",
+          "items": {
+            "originalRef": "JxcPurordersCgdglAutoEntity",
+            "$ref": "#/definitions/JxcPurordersCgdglAutoEntity"
+          }
+        },
+        "purchaseCode": {
+          "type": "string",
+          "description": "采购编号"
+        },
+        "purchaseDescription": {
+          "type": "string",
+          "description": "采购说明"
+        },
+        "purchaseStatus": {
+          "type": "string",
+          "description": "采购状态"
+        },
+        "purchaseType": {
+          "type": "string",
+          "description": "采购类型"
+        },
+        "stationCode": {
+          "type": "string",
+          "description": "岗位"
+        },
+        "suppliercode": {
+          "type": "string",
+          "description": "供应商名称"
+        },
+        "updateTime": {
+          "type": "string",
+          "description": "更新时间"
+        }
+      },
+      "title": "JxcPurCgdglVo"
+    },
+    "JxcPurPlanDetailInsertVo": {
+      "type": "object",
+      "properties": {
+        "amount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "数量"
+        },
+        "itemName": {
+          "type": "string",
+          "description": "资料名称"
+        },
+        "parent1": {
+          "type": "string",
+          "description": "一级类目"
+        },
+        "parent2": {
+          "type": "string",
+          "description": "二级类目"
+        },
+        "parent3": {
+          "type": "string",
+          "description": "三级类目"
+        },
+        "price": {
+          "type": "number",
+          "description": "单价"
+        },
+        "totalPrice": {
+          "type": "number",
+          "description": "采购单计划总价"
+        }
+      },
+      "title": "JxcPurPlanDetailInsertVo"
+    },
+    "JxcPurPlanInsertVo": {
+      "type": "object",
+      "properties": {
+        "branchCode": {
+          "type": "string",
+          "description": "分部"
+        },
+        "child": {
+          "type": "array",
+          "description": "采购计划详情",
+          "items": {
+            "originalRef": "JxcPurPlanDetailInsertVo",
+            "$ref": "#/definitions/JxcPurPlanDetailInsertVo"
+          }
+        },
+        "deptCode": {
+          "type": "string",
+          "description": "部门"
+        },
+        "file": {
+          "type": "string",
+          "description": "文件上传"
+        },
+        "payDescription": {
+          "type": "string",
+          "description": "付款说明"
+        },
+        "payLowercase": {
+          "type": "number",
+          "description": "支付金额（小写）"
+        },
+        "payUppercase": {
+          "type": "string",
+          "description": "支付金额（大写）"
+        },
+        "planDescription": {
+          "type": "string",
+          "description": "采购说明信息"
+        },
+        "planTel": {
+          "type": "string",
+          "description": "录入人电话"
+        },
+        "planUser": {
+          "type": "string",
+          "description": "计划录入人"
+        },
+        "planYear": {
+          "type": "string",
+          "description": "计划年度"
+        },
+        "purType": {
+          "type": "string",
+          "description": "采购计划类型"
+        },
+        "stationCode": {
+          "type": "string",
+          "description": "岗位"
+        }
+      },
+      "title": "JxcPurPlanInsertVo"
+    },
+    "JxcPurPlanUpdateVo": {
+      "type": "object",
+      "properties": {
+        "branchCode": {
+          "type": "string"
+        },
+        "child": {
+          "type": "array",
+          "items": {
+            "originalRef": "JxcPurordersplanCgjhglAutoEntity",
+            "$ref": "#/definitions/JxcPurordersplanCgjhglAutoEntity"
+          }
+        },
+        "createdTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "deptCode": {
+          "type": "string"
+        },
+        "file": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "isDel": {
+          "type": "boolean"
+        },
+        "payDescription": {
+          "type": "string"
+        },
+        "payLowercase": {
+          "type": "number"
+        },
+        "payUppercase": {
+          "type": "string"
+        },
+        "planCode": {
+          "type": "string"
+        },
+        "planDescription": {
+          "type": "string"
+        },
+        "planStatus": {
+          "type": "string"
+        },
+        "planTel": {
+          "type": "string"
+        },
+        "planUser": {
+          "type": "string"
+        },
+        "planYear": {
+          "type": "string"
+        },
+        "purType": {
+          "type": "string"
+        },
+        "stationCode": {
+          "type": "string"
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "userCode": {
+          "type": "string"
+        }
+      },
+      "title": "JxcPurPlanUpdateVo"
+    },
+    "JxcPurordersCgdglAutoEntity": {
+      "type": "object",
+      "properties": {
+        "amount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "数量"
+        },
+        "createdTime": {
+          "type": "string",
+          "description": "创建时间"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "isDel": {
+          "type": "boolean",
+          "description": "是否删除"
+        },
+        "itemName": {
+          "type": "string",
+          "description": "商品名称"
+        },
+        "parent1": {
+          "type": "string",
+          "description": "一级类目"
+        },
+        "parent2": {
+          "type": "string",
+          "description": "二级类目"
+        },
+        "parent3": {
+          "type": "string",
+          "description": "三级类目"
+        },
+        "price": {
+          "type": "number",
+          "description": "单价"
+        },
+        "purCode": {
+          "type": "integer",
+          "format": "int64",
+          "description": "关联采购单"
+        },
+        "totalPrice": {
+          "type": "number",
+          "description": "总价"
+        },
+        "updateTime": {
+          "type": "string",
+          "description": "更新时间"
+        }
+      },
+      "title": "JxcPurordersCgdglAutoEntity"
+    },
+    "JxcPurordersCgdglDetailVo": {
+      "type": "object",
+      "properties": {
+        "amount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "数量"
+        },
+        "aogAmount": {
+          "type": "string",
+          "description": "到货数量"
+        },
+        "aogdetailId": {
+          "type": "string",
+          "description": "到货单号"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "itemName": {
+          "type": "string",
+          "description": "商品名称"
+        },
+        "parent1": {
+          "type": "string",
+          "description": "一级类目"
+        },
+        "parent2": {
+          "type": "string",
+          "description": "二级类目"
+        },
+        "parent3": {
+          "type": "string",
+          "description": "三级类目"
+        },
+        "price": {
+          "type": "number",
+          "description": "单价"
+        },
+        "purCode": {
+          "type": "integer",
+          "format": "int64",
+          "description": "关联采购单"
+        },
+        "totalPrice": {
+          "type": "number",
+          "description": "总价"
+        }
+      },
+      "title": "JxcPurordersCgdglDetailVo"
+    },
+    "JxcPurordersplanCgjhglAutoEntity": {
+      "type": "object",
+      "properties": {
+        "amount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "createdTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "isDel": {
+          "type": "boolean"
+        },
+        "itemName": {
+          "type": "string"
+        },
+        "parent1": {
+          "type": "string"
+        },
+        "parent2": {
+          "type": "string"
+        },
+        "parent3": {
+          "type": "string"
+        },
+        "planId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "price": {
+          "type": "number"
+        },
+        "totalPrice": {
+          "type": "number"
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "title": "JxcPurordersplanCgjhglAutoEntity"
+    },
+    "JxcRefundordersInsertVo": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "退款说明"
+        },
+        "itemName": {
+          "type": "string",
+          "description": "资料名称"
+        },
+        "purdetailId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "关联采购单详情"
+        },
+        "refundAmount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "退货数量"
+        },
+        "refundNumber": {
+          "type": "string",
+          "description": "退货单号"
+        },
+        "refundPrice": {
+          "type": "number",
+          "description": "退款金额"
+        },
+        "supplierCode": {
+          "type": "string",
+          "description": "供应商名称"
+        }
+      },
+      "title": "JxcRefundordersInsertVo"
+    },
+    "JxcStoreAutoEntity": {
+      "type": "object",
+      "properties": {
+        "createTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "createUserId": {
+          "type": "string"
+        },
+        "createUserName": {
+          "type": "string"
+        },
+        "isDel": {
+          "type": "boolean"
+        },
+        "storeCode": {
+          "type": "string"
+        },
+        "storeId": {
+          "type": "string"
+        },
+        "storeName": {
+          "type": "string"
+        },
+        "storeStartTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "storeStatus": {
+          "type": "boolean"
+        },
+        "storeTel": {
+          "type": "string"
+        },
+        "storeUserId": {
+          "type": "string"
+        },
+        "storeUserName": {
+          "type": "string"
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updateUserId": {
+          "type": "string"
+        },
+        "updateUserName": {
+          "type": "string"
+        }
+      },
+      "title": "JxcStoreAutoEntity"
+    },
+    "JxcSupplierAutoEntity": {
+      "type": "object",
+      "properties": {
+        "createTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "createUserId": {
+          "type": "string"
+        },
+        "createUserName": {
+          "type": "string"
+        },
+        "dockingUserId": {
+          "type": "string"
+        },
+        "dockingUserName": {
+          "type": "string"
+        },
+        "isDel": {
+          "type": "boolean"
+        },
+        "supplierCode": {
+          "type": "string"
+        },
+        "supplierId": {
+          "type": "string"
+        },
+        "supplierName": {
+          "type": "string"
+        },
+        "supplierStartTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "supplierStatus": {
+          "type": "boolean"
+        },
+        "supplierTel": {
+          "type": "string"
+        },
+        "supplierType": {
+          "type": "string"
+        },
+        "supplierUsername": {
+          "type": "string"
+        },
+        "taxpayerId": {
+          "type": "string"
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updateUserId": {
+          "type": "string"
+        },
+        "updateUserName": {
+          "type": "string"
+        }
+      },
+      "title": "JxcSupplierAutoEntity"
+    },
+    "JxcWarehouseAutoEntity": {
+      "type": "object",
+      "properties": {
+        "createTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "createUserId": {
+          "type": "string"
+        },
+        "createUserName": {
+          "type": "string"
+        },
+        "isDel": {
+          "type": "boolean"
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updateUserId": {
+          "type": "string"
+        },
+        "updateUserName": {
+          "type": "string"
+        },
+        "warehouseAddress": {
+          "type": "string"
+        },
+        "warehouseCode": {
+          "type": "string"
+        },
+        "warehouseDeptId": {
+          "type": "string"
+        },
+        "warehouseDeptName": {
+          "type": "string"
+        },
+        "warehouseDescription": {
+          "type": "string"
+        },
+        "warehouseId": {
+          "type": "string"
+        },
+        "warehouseName": {
+          "type": "string"
+        },
+        "warehouseStatus": {
+          "type": "boolean"
+        },
+        "warehouseType": {
+          "type": "string"
+        },
+        "warehouseUserId": {
+          "type": "string"
+        },
+        "warehouseUserName": {
+          "type": "string"
+        }
+      },
+      "title": "JxcWarehouseAutoEntity"
+    },
+    "JxcWarehouseInByBooksVo": {
+      "type": "object",
+      "properties": {
+        "child": {
+          "type": "array",
+          "description": "图书入库详情",
+          "items": {
+            "originalRef": "JxcWarehouseInDetailByBooksVo",
+            "$ref": "#/definitions/JxcWarehouseInDetailByBooksVo"
+          }
+        },
+        "depotCode": {
+          "type": "string",
+          "description": "仓库编码"
+        },
+        "description": {
+          "type": "string",
+          "description": "入库备注"
+        },
+        "inboundAmount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "入库数量"
+        },
+        "inboundCode": {
+          "type": "string",
+          "description": "入库单号"
+        },
+        "inboundPrice": {
+          "type": "number",
+          "description": "入库金额"
+        },
+        "inboundStatus": {
+          "type": "string",
+          "description": "入库状态"
+        },
+        "inboundTime": {
+          "type": "string",
+          "description": "入库时间"
+        },
+        "inboundType": {
+          "type": "string",
+          "description": "入库类型"
+        },
+        "inboundUser": {
+          "type": "string",
+          "description": "入库操作人"
+        },
+        "supplierCode": {
+          "type": "string",
+          "description": "代理商编码"
+        }
+      },
+      "title": "JxcWarehouseInByBooksVo"
+    },
+    "JxcWarehouseInByItemsVo": {
+      "type": "object",
+      "properties": {
+        "child": {
+          "type": "array",
+          "description": "办公物品入库详情",
+          "items": {
+            "originalRef": "JxcWarehouseInDetailByItemsVo",
+            "$ref": "#/definitions/JxcWarehouseInDetailByItemsVo"
+          }
+        },
+        "depotCode": {
+          "type": "string",
+          "description": "仓库编码"
+        },
+        "description": {
+          "type": "string",
+          "description": "入库备注"
+        },
+        "inboundAmount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "入库数量"
+        },
+        "inboundCode": {
+          "type": "string",
+          "description": "入库单号"
+        },
+        "inboundPrice": {
+          "type": "number",
+          "description": "入库金额"
+        },
+        "inboundStatus": {
+          "type": "string",
+          "description": "入库状态"
+        },
+        "inboundTime": {
+          "type": "string",
+          "description": "入库时间"
+        },
+        "inboundType": {
+          "type": "string",
+          "description": "入库类型"
+        },
+        "inboundUser": {
+          "type": "string",
+          "description": "入库操作人"
+        },
+        "supplierCode": {
+          "type": "string",
+          "description": "代理商编码"
+        }
+      },
+      "title": "JxcWarehouseInByItemsVo"
+    },
+    "JxcWarehouseInDetailByBooksVo": {
+      "type": "object",
+      "properties": {
+        "amount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "数量"
+        },
+        "itemName": {
+          "type": "string",
+          "description": "物品名称"
+        },
+        "itemYear": {
+          "type": "string",
+          "description": "年份"
+        },
+        "parent1": {
+          "type": "string",
+          "description": "一级类目"
+        },
+        "parent2": {
+          "type": "string",
+          "description": "二级类目"
+        },
+        "parent3": {
+          "type": "string",
+          "description": "三级类目"
+        },
+        "price": {
+          "type": "number",
+          "description": "单价"
+        },
+        "totalPrice": {
+          "type": "number",
+          "description": "总价"
+        }
+      },
+      "title": "JxcWarehouseInDetailByBooksVo"
+    },
+    "JxcWarehouseInDetailByItemsVo": {
+      "type": "object",
+      "properties": {
+        "amount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "数量"
+        },
+        "itemName": {
+          "type": "string",
+          "description": "物品名称"
+        },
+        "officeBrand": {
+          "type": "string",
+          "description": "品牌"
+        },
+        "officeSpecification": {
+          "type": "string",
+          "description": "规格"
+        },
+        "officeUnits": {
+          "type": "string",
+          "description": "单位"
+        },
+        "parent1": {
+          "type": "string",
+          "description": "一级类目"
+        },
+        "parent2": {
+          "type": "string",
+          "description": "二级类目"
+        },
+        "parent3": {
+          "type": "string",
+          "description": "三级类目"
+        },
+        "price": {
+          "type": "number",
+          "description": "单价"
+        },
+        "totalPrice": {
+          "type": "number",
+          "description": "总价"
+        }
+      },
+      "title": "JxcWarehouseInDetailByItemsVo"
+    },
+    "JxcWarehouseInVo": {
+      "type": "object",
+      "properties": {
+        "child": {
+          "type": "array",
+          "description": "入库详情",
+          "items": {
+            "originalRef": "JxcWarehouseinDetailVo",
+            "$ref": "#/definitions/JxcWarehouseinDetailVo"
+          }
+        },
+        "commitTime": {
+          "type": "string",
+          "description": "提交时间"
+        },
+        "createdTime": {
+          "type": "string",
+          "description": "创建时间"
+        },
+        "depotCode": {
+          "type": "string",
+          "description": "仓库编码"
+        },
+        "description": {
+          "type": "string",
+          "description": "入库备注"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "主键id"
+        },
+        "inboundAmount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "入库数量"
+        },
+        "inboundCode": {
+          "type": "string",
+          "description": "入库单号"
+        },
+        "inboundPrice": {
+          "type": "number",
+          "description": "入库金额"
+        },
+        "inboundStatus": {
+          "type": "string",
+          "description": "入库状态"
+        },
+        "inboundTime": {
+          "type": "string",
+          "description": "入库时间"
+        },
+        "inboundType": {
+          "type": "string",
+          "description": "入库类型"
+        },
+        "inboundUser": {
+          "type": "string",
+          "description": "入库操作人"
+        },
+        "isDel": {
+          "type": "boolean",
+          "description": "是否删除"
+        },
+        "lastoperationUser": {
+          "type": "string",
+          "description": "最后操作人"
+        },
+        "supplierCode": {
+          "type": "string",
+          "description": "代理商编码"
+        },
+        "updateTime": {
+          "type": "string",
+          "description": "更新时间"
+        }
+      },
+      "title": "JxcWarehouseInVo"
+    },
+    "JxcWarehouseOutByBooksVo": {
+      "type": "object",
+      "properties": {
+        "child": {
+          "type": "array",
+          "description": "出库单详情",
+          "items": {
+            "originalRef": "JxcWarehouseOutDetailByBooksVo",
+            "$ref": "#/definitions/JxcWarehouseOutDetailByBooksVo"
+          }
+        },
+        "consigneeAddress": {
+          "type": "string",
+          "description": "详细地址"
+        },
+        "consigneeCity": {
+          "type": "string",
+          "description": "市"
+        },
+        "consigneeDescription": {
+          "type": "string",
+          "description": "备注信息"
+        },
+        "consigneeDistrict": {
+          "type": "string",
+          "description": "区/县"
+        },
+        "consigneeProvince": {
+          "type": "string",
+          "description": "省"
+        },
+        "consigneeTel": {
+          "type": "string",
+          "description": "收货人电话"
+        },
+        "consigneeUser": {
+          "type": "string",
+          "description": "收货人"
+        },
+        "outboundCampus": {
+          "type": "string",
+          "description": "所属分校"
+        },
+        "outboundDepot": {
+          "type": "string",
+          "description": "出货仓库"
+        },
+        "outboundType": {
+          "type": "string",
+          "description": "出库类型"
+        },
+        "pickTel": {
+          "type": "string",
+          "description": "提货人电话"
+        },
+        "pickUser": {
+          "type": "string",
+          "description": "提货人"
+        },
+        "receivingType": {
+          "type": "integer",
+          "format": "int32",
+          "description": "收货方式（1：自提 2：邮寄）"
+        }
+      },
+      "title": "JxcWarehouseOutByBooksVo"
+    },
+    "JxcWarehouseOutByItemsVo": {
+      "type": "object",
+      "properties": {
+        "child": {
+          "type": "array",
+          "description": "办公物品出库详情",
+          "items": {
+            "originalRef": "JxcWarehouseOutDetailByItemsVo",
+            "$ref": "#/definitions/JxcWarehouseOutDetailByItemsVo"
+          }
+        },
+        "consigneeAddress": {
+          "type": "string",
+          "description": "详细地址"
+        },
+        "consigneeCity": {
+          "type": "string",
+          "description": "市"
+        },
+        "consigneeDescription": {
+          "type": "string",
+          "description": "备注信息"
+        },
+        "consigneeDistrict": {
+          "type": "string",
+          "description": "区/县"
+        },
+        "consigneeProvince": {
+          "type": "string",
+          "description": "省"
+        },
+        "consigneeTel": {
+          "type": "string",
+          "description": "收货人电话"
+        },
+        "consigneeUser": {
+          "type": "string",
+          "description": "收货人"
+        },
+        "outboundCampus": {
+          "type": "string",
+          "description": "所属分校"
+        },
+        "outboundCode": {
+          "type": "string",
+          "description": "出库单号"
+        },
+        "outboundDepot": {
+          "type": "string",
+          "description": "出货仓库"
+        },
+        "outboundType": {
+          "type": "string",
+          "description": "出库类型"
+        },
+        "pickTel": {
+          "type": "string",
+          "description": "提货人电话"
+        },
+        "pickUser": {
+          "type": "string",
+          "description": "提货人"
+        },
+        "receivingType": {
+          "type": "integer",
+          "format": "int32",
+          "description": "收货方式（1：自提 2：邮寄）"
+        }
+      },
+      "title": "JxcWarehouseOutByItemsVo"
+    },
+    "JxcWarehouseOutDetailByBooksVo": {
+      "type": "object",
+      "properties": {
+        "createdTime": {
+          "type": "string",
+          "description": "创建时间"
+        },
+        "updateTime": {
+          "type": "string",
+          "description": "更新时间"
+        }
+      },
+      "title": "JxcWarehouseOutDetailByBooksVo"
+    },
+    "JxcWarehouseOutDetailByItemsVo": {
+      "type": "object",
+      "properties": {
+        "amount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "数量"
+        },
+        "itemName": {
+          "type": "string",
+          "description": "资料名称/物品名称"
+        },
+        "officeBrand": {
+          "type": "string",
+          "description": "品牌"
+        },
+        "officeSpecification": {
+          "type": "string",
+          "description": "规格"
+        },
+        "officeUnits": {
+          "type": "string",
+          "description": "单位"
+        },
+        "parent1": {
+          "type": "string",
+          "description": "一级类目"
+        },
+        "parent2": {
+          "type": "string",
+          "description": "二级类目"
+        },
+        "parent3": {
+          "type": "string",
+          "description": "三级类目"
+        },
+        "price": {
+          "type": "number",
+          "description": "单价"
+        },
+        "totalPrice": {
+          "type": "number",
+          "description": "总价"
+        }
+      },
+      "title": "JxcWarehouseOutDetailByItemsVo"
+    },
+    "JxcWarehouseinDetailVo": {
+      "type": "object",
+      "properties": {
+        "amount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "数量"
+        },
+        "createdTime": {
+          "type": "string",
+          "description": "创建时间"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "主键id"
+        },
+        "isDel": {
+          "type": "boolean",
+          "description": "是否删除"
+        },
+        "itemName": {
+          "type": "string",
+          "description": "物品名称"
+        },
+        "itemYear": {
+          "type": "string",
+          "description": "年份"
+        },
+        "officeBrand": {
+          "type": "string",
+          "description": "品牌"
+        },
+        "officeSpecification": {
+          "type": "string",
+          "description": "规格"
+        },
+        "officeUnits": {
+          "type": "string",
+          "description": "单位"
+        },
+        "parent1": {
+          "type": "string",
+          "description": "一级类目"
+        },
+        "parent2": {
+          "type": "string",
+          "description": "二级类目"
+        },
+        "parent3": {
+          "type": "string",
+          "description": "三级类目"
+        },
+        "price": {
+          "type": "number",
+          "description": "单价"
+        },
+        "totalPrice": {
+          "type": "number",
+          "description": "总价"
+        },
+        "updateTime": {
+          "type": "string",
+          "description": "更新时间"
+        },
+        "warehouseinId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "关联入库主表"
+        }
+      },
+      "title": "JxcWarehouseinDetailVo"
+    },
+    "JxcpurAogVo": {
+      "type": "object",
+      "properties": {
+        "balance": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "主键"
+        },
+        "jxcCorrelationAogVos": {
+          "description": "到货单数据修改",
+          "originalRef": "SelectAogVo",
+          "$ref": "#/definitions/SelectAogVo"
+        }
+      },
+      "title": "JxcpurAogVo"
+    },
+    "Result": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "description": "状态值"
+        },
+        "data": {
+          "type": "object",
+          "description": "返回的数据"
+        },
+        "msg": {
+          "type": "string",
+          "description": "对本次状态码的描述"
+        }
+      },
+      "title": "Result"
+    },
+    "Result«JxcAogDetailDhdglVo»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "description": "状态值"
+        },
+        "data": {
+          "description": "返回的数据",
+          "originalRef": "JxcAogDetailDhdglVo",
+          "$ref": "#/definitions/JxcAogDetailDhdglVo"
+        },
+        "msg": {
+          "type": "string",
+          "description": "对本次状态码的描述"
+        }
+      },
+      "title": "Result«JxcAogDetailDhdglVo»"
+    },
+    "Result«JxcPurCgdgDetailVo»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "description": "状态值"
+        },
+        "data": {
+          "description": "返回的数据",
+          "originalRef": "JxcPurCgdgDetailVo",
+          "$ref": "#/definitions/JxcPurCgdgDetailVo"
+        },
+        "msg": {
+          "type": "string",
+          "description": "对本次状态码的描述"
+        }
+      },
+      "title": "Result«JxcPurCgdgDetailVo»"
+    },
+    "SelectAogVo": {
+      "type": "object",
+      "properties": {
+        "amount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "可分配数量"
+        },
+        "aogId": {
+          "type": "string",
+          "description": "单货单号"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "itemName": {
+          "type": "string",
+          "description": "物品名称"
+        }
+      },
+      "title": "SelectAogVo"
+    }
+  }
+}

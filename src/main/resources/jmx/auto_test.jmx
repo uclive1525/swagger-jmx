@@ -1,0 +1,869 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.1.1 r1855137">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="测试计划" enabled="true">
+      <stringProp name="TestPlan.comments">This is a sample server Petstore server.  You can find out more about Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).  For this sample, you can use the api key `special-key` to test the authorization filters.</stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+
+	<!--线程组开始-->
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="线程组" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="循环控制器" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1603853091000</longProp>
+        <longProp name="ThreadGroup.end_time">1603853091000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+	  
+	  <hashTree>
+	    <!--网关环境开始-->
+		<Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="网关环境" enabled="true">
+		  <collectionProp name="Arguments.arguments">
+			<elementProp name="host" elementType="Argument">
+			  <stringProp name="Argument.name">host</stringProp>
+			  <stringProp name="Argument.metadata">=</stringProp>
+			  <stringProp name="Argument.value">petstore.swagger.io</stringProp>
+			</elementProp>
+
+			<elementProp name="port" elementType="Argument">
+              <stringProp name="Argument.name">port</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              <stringProp name="Argument.value">80</stringProp>
+
+            </elementProp>
+
+		  </collectionProp>
+		</Arguments>
+		<hashTree/>
+		
+		<!--请求头开始-->
+		<HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP信息头管理器" enabled="true">
+		  <collectionProp name="HeaderManager.headers">
+			<elementProp name="" elementType="Header">
+			  <stringProp name="Header.name">Content-Type</stringProp>
+			  <stringProp name="Header.value">application/json</stringProp>
+			</elementProp>
+		  </collectionProp>
+		</HeaderManager>
+		<hashTree/>
+		<!--HTTP请求默认值-->
+		<ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP请求默认值" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${host}</stringProp>
+          <stringProp name="HTTPSampler.port">${port}</stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path"></stringProp>
+          <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </ConfigTestElement>
+        <hashTree/>
+		
+		<!--自定义变量开始-->
+		<Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+          <collectionProp name="Arguments.arguments">
+
+            <elementProp name="vin" elementType="Argument">
+              <stringProp name="Argument.name">uploadFile.petId</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <stringProp name="Argument.desc">ID of pet to update</stringProp>
+            </elementProp>
+            <elementProp name="vin" elementType="Argument">
+              <stringProp name="Argument.name">findPetsByStatus.status</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <stringProp name="Argument.desc">Status values that need to be considered for filter</stringProp>
+            </elementProp>
+            <elementProp name="vin" elementType="Argument">
+              <stringProp name="Argument.name">findPetsByTags.tags</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <stringProp name="Argument.desc">Tags to filter by</stringProp>
+            </elementProp>
+            <elementProp name="vin" elementType="Argument">
+              <stringProp name="Argument.name">getPetById.petId</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <stringProp name="Argument.desc">ID of pet to return</stringProp>
+            </elementProp>
+            <elementProp name="vin" elementType="Argument">
+              <stringProp name="Argument.name">getOrderById.orderId</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <stringProp name="Argument.desc">ID of pet that needs to be fetched</stringProp>
+            </elementProp>
+            <elementProp name="vin" elementType="Argument">
+              <stringProp name="Argument.name">getUserByName.username</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <stringProp name="Argument.desc">The name that needs to be fetched. Use user1 for testing. </stringProp>
+            </elementProp>
+            <elementProp name="vin" elementType="Argument">
+              <stringProp name="Argument.name">loginUser.username</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <stringProp name="Argument.desc">The user name for login</stringProp>
+            </elementProp>
+            <elementProp name="vin" elementType="Argument">
+              <stringProp name="Argument.name">loginUser.password</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <stringProp name="Argument.desc">The password for login in clear text</stringProp>
+            </elementProp>
+          </collectionProp>
+        </Arguments>
+        <hashTree/>
+		
+		<!--服务逻辑控制器-->
+		<GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Swagger Petstore" enabled="true" />
+        <!--需要循环遍历controller，每个controller生成一个控制器-->
+		<hashTree>
+		  <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="store" enabled="true">
+            <stringProp name="TestPlan.comments"></stringProp>
+		  </GenericController>
+		  <hashTree>
+		     <!--遍历请求接口-->
+			<HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Place an order for a pet" enabled="true">
+			      <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                    <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                      <collectionProp name="Arguments.arguments">
+                        <elementProp name="" elementType="HTTPArgument">
+                          <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                          <stringProp name="Argument.value">{
+  "petId" : 6,
+  "quantity" : 1,
+  "id" : 0,
+  "shipDate" : "2000-01-23T04:56:07.000+00:00",
+  "complete" : true,
+  "status" : "placed"
+}</stringProp>
+                          <stringProp name="Argument.metadata">=</stringProp>
+                        </elementProp>
+                      </collectionProp>
+                    </elementProp>
+				  <stringProp name="HTTPSampler.domain"></stringProp>
+				  <stringProp name="HTTPSampler.port"></stringProp>
+				  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+				  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+				  <stringProp name="HTTPSampler.protocol"></stringProp>
+				  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+				  <stringProp name="HTTPSampler.path">/store/order</stringProp>
+				  <stringProp name="HTTPSampler.method">POST</stringProp>
+				  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+				  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+				  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+				  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+				  <stringProp name="HTTPSampler.implementation"></stringProp>
+				  <boolProp name="HTTPSampler.monitor">false</boolProp>
+				  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+				  <stringProp name="TestPlan.comments">placeOrder</stringProp>
+			  </HTTPSamplerProxy>
+			  <hashTree>
+			     <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="接口header管理器名称" enabled="true">
+                     <collectionProp name="HeaderManager.headers">
+                     </collectionProp>
+                     <stringProp name="TestPlan.comments">接口header管理器描述</stringProp>
+                 </HeaderManager>
+                 <hashTree/>
+
+			    <!--每个接口断言定义开始-->
+				  <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="Response状态码断言" enabled="true">
+                     <stringProp name="JSON_PATH">$.statusCode</stringProp>
+                     <stringProp name="EXPECTED_VALUE">0</stringProp>
+                     <boolProp name="JSONVALIDATION">true</boolProp>
+                     <boolProp name="EXPECT_NULL">false</boolProp>
+                     <boolProp name="INVERT">false</boolProp>
+                     <boolProp name="ISREGEX">true</boolProp>
+                   </JSONPathAssertion>
+				   <hashTree/>
+				 <!--每个接口断言定义结束-->
+			  </hashTree>
+			<HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Find purchase order by ID" enabled="true">
+				  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+					 <collectionProp name="Arguments.arguments">
+					</collectionProp>
+				  </elementProp>
+				  <stringProp name="HTTPSampler.domain"></stringProp>
+				  <stringProp name="HTTPSampler.port"></stringProp>
+				  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+				  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+				  <stringProp name="HTTPSampler.protocol"></stringProp>
+				  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+				  <stringProp name="HTTPSampler.path">/store/order/${getOrderById.orderId}</stringProp>
+				  <stringProp name="HTTPSampler.method">GET</stringProp>
+				  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+				  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+				  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+				  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+				  <stringProp name="HTTPSampler.implementation"></stringProp>
+				  <boolProp name="HTTPSampler.monitor">false</boolProp>
+				  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+				  <stringProp name="TestPlan.comments">getOrderById</stringProp>
+			  </HTTPSamplerProxy>
+			  <hashTree>
+			     <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="接口header管理器名称" enabled="true">
+                     <collectionProp name="HeaderManager.headers">
+                     </collectionProp>
+                     <stringProp name="TestPlan.comments">接口header管理器描述</stringProp>
+                 </HeaderManager>
+                 <hashTree/>
+
+			    <!--每个接口断言定义开始-->
+				  <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="Response状态码断言" enabled="true">
+                     <stringProp name="JSON_PATH">$.statusCode</stringProp>
+                     <stringProp name="EXPECTED_VALUE">0</stringProp>
+                     <boolProp name="JSONVALIDATION">true</boolProp>
+                     <boolProp name="EXPECT_NULL">false</boolProp>
+                     <boolProp name="INVERT">false</boolProp>
+                     <boolProp name="ISREGEX">true</boolProp>
+                   </JSONPathAssertion>
+				   <hashTree/>
+				 <!--每个接口断言定义结束-->
+			  </hashTree>
+			<HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Returns pet inventories by status" enabled="true">
+				  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+					 <collectionProp name="Arguments.arguments">
+					</collectionProp>
+				  </elementProp>
+				  <stringProp name="HTTPSampler.domain"></stringProp>
+				  <stringProp name="HTTPSampler.port"></stringProp>
+				  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+				  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+				  <stringProp name="HTTPSampler.protocol"></stringProp>
+				  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+				  <stringProp name="HTTPSampler.path">/store/inventory</stringProp>
+				  <stringProp name="HTTPSampler.method">GET</stringProp>
+				  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+				  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+				  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+				  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+				  <stringProp name="HTTPSampler.implementation"></stringProp>
+				  <boolProp name="HTTPSampler.monitor">false</boolProp>
+				  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+				  <stringProp name="TestPlan.comments">getInventory</stringProp>
+			  </HTTPSamplerProxy>
+			  <hashTree>
+			     <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="接口header管理器名称" enabled="true">
+                     <collectionProp name="HeaderManager.headers">
+                     </collectionProp>
+                     <stringProp name="TestPlan.comments">接口header管理器描述</stringProp>
+                 </HeaderManager>
+                 <hashTree/>
+
+			    <!--每个接口断言定义开始-->
+				  <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="Response状态码断言" enabled="true">
+                     <stringProp name="JSON_PATH">$.statusCode</stringProp>
+                     <stringProp name="EXPECTED_VALUE">0</stringProp>
+                     <boolProp name="JSONVALIDATION">true</boolProp>
+                     <boolProp name="EXPECT_NULL">false</boolProp>
+                     <boolProp name="INVERT">false</boolProp>
+                     <boolProp name="ISREGEX">true</boolProp>
+                   </JSONPathAssertion>
+				   <hashTree/>
+				 <!--每个接口断言定义结束-->
+			  </hashTree>
+		  </hashTree>
+		  <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="user" enabled="true">
+            <stringProp name="TestPlan.comments"></stringProp>
+		  </GenericController>
+		  <hashTree>
+		     <!--遍历请求接口-->
+			<HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Creates list of users with given input array" enabled="true">
+				  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+					 <collectionProp name="Arguments.arguments">
+					</collectionProp>
+				  </elementProp>
+				  <stringProp name="HTTPSampler.domain"></stringProp>
+				  <stringProp name="HTTPSampler.port"></stringProp>
+				  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+				  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+				  <stringProp name="HTTPSampler.protocol"></stringProp>
+				  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+				  <stringProp name="HTTPSampler.path">/user/createWithArray</stringProp>
+				  <stringProp name="HTTPSampler.method">POST</stringProp>
+				  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+				  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+				  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+				  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+				  <stringProp name="HTTPSampler.implementation"></stringProp>
+				  <boolProp name="HTTPSampler.monitor">false</boolProp>
+				  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+				  <stringProp name="TestPlan.comments">createUsersWithArrayInput</stringProp>
+			  </HTTPSamplerProxy>
+			  <hashTree>
+			     <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="接口header管理器名称" enabled="true">
+                     <collectionProp name="HeaderManager.headers">
+                     </collectionProp>
+                     <stringProp name="TestPlan.comments">接口header管理器描述</stringProp>
+                 </HeaderManager>
+                 <hashTree/>
+
+			    <!--每个接口断言定义开始-->
+				  <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="Response状态码断言" enabled="true">
+                     <stringProp name="JSON_PATH">$.statusCode</stringProp>
+                     <stringProp name="EXPECTED_VALUE">0</stringProp>
+                     <boolProp name="JSONVALIDATION">true</boolProp>
+                     <boolProp name="EXPECT_NULL">false</boolProp>
+                     <boolProp name="INVERT">false</boolProp>
+                     <boolProp name="ISREGEX">true</boolProp>
+                   </JSONPathAssertion>
+				   <hashTree/>
+				 <!--每个接口断言定义结束-->
+			  </hashTree>
+			<HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Creates list of users with given input array" enabled="true">
+				  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+					 <collectionProp name="Arguments.arguments">
+					</collectionProp>
+				  </elementProp>
+				  <stringProp name="HTTPSampler.domain"></stringProp>
+				  <stringProp name="HTTPSampler.port"></stringProp>
+				  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+				  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+				  <stringProp name="HTTPSampler.protocol"></stringProp>
+				  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+				  <stringProp name="HTTPSampler.path">/user/createWithList</stringProp>
+				  <stringProp name="HTTPSampler.method">POST</stringProp>
+				  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+				  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+				  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+				  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+				  <stringProp name="HTTPSampler.implementation"></stringProp>
+				  <boolProp name="HTTPSampler.monitor">false</boolProp>
+				  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+				  <stringProp name="TestPlan.comments">createUsersWithListInput</stringProp>
+			  </HTTPSamplerProxy>
+			  <hashTree>
+			     <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="接口header管理器名称" enabled="true">
+                     <collectionProp name="HeaderManager.headers">
+                     </collectionProp>
+                     <stringProp name="TestPlan.comments">接口header管理器描述</stringProp>
+                 </HeaderManager>
+                 <hashTree/>
+
+			    <!--每个接口断言定义开始-->
+				  <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="Response状态码断言" enabled="true">
+                     <stringProp name="JSON_PATH">$.statusCode</stringProp>
+                     <stringProp name="EXPECTED_VALUE">0</stringProp>
+                     <boolProp name="JSONVALIDATION">true</boolProp>
+                     <boolProp name="EXPECT_NULL">false</boolProp>
+                     <boolProp name="INVERT">false</boolProp>
+                     <boolProp name="ISREGEX">true</boolProp>
+                   </JSONPathAssertion>
+				   <hashTree/>
+				 <!--每个接口断言定义结束-->
+			  </hashTree>
+			<HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get user by user name" enabled="true">
+				  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+					 <collectionProp name="Arguments.arguments">
+					</collectionProp>
+				  </elementProp>
+				  <stringProp name="HTTPSampler.domain"></stringProp>
+				  <stringProp name="HTTPSampler.port"></stringProp>
+				  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+				  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+				  <stringProp name="HTTPSampler.protocol"></stringProp>
+				  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+				  <stringProp name="HTTPSampler.path">/user/${getUserByName.username}</stringProp>
+				  <stringProp name="HTTPSampler.method">GET</stringProp>
+				  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+				  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+				  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+				  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+				  <stringProp name="HTTPSampler.implementation"></stringProp>
+				  <boolProp name="HTTPSampler.monitor">false</boolProp>
+				  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+				  <stringProp name="TestPlan.comments">getUserByName</stringProp>
+			  </HTTPSamplerProxy>
+			  <hashTree>
+			     <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="接口header管理器名称" enabled="true">
+                     <collectionProp name="HeaderManager.headers">
+                     </collectionProp>
+                     <stringProp name="TestPlan.comments">接口header管理器描述</stringProp>
+                 </HeaderManager>
+                 <hashTree/>
+
+			    <!--每个接口断言定义开始-->
+				  <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="Response状态码断言" enabled="true">
+                     <stringProp name="JSON_PATH">$.statusCode</stringProp>
+                     <stringProp name="EXPECTED_VALUE">0</stringProp>
+                     <boolProp name="JSONVALIDATION">true</boolProp>
+                     <boolProp name="EXPECT_NULL">false</boolProp>
+                     <boolProp name="INVERT">false</boolProp>
+                     <boolProp name="ISREGEX">true</boolProp>
+                   </JSONPathAssertion>
+				   <hashTree/>
+				 <!--每个接口断言定义结束-->
+			  </hashTree>
+			<HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Logs user into the system" enabled="true">
+				  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+					 <collectionProp name="Arguments.arguments">
+						<elementProp name="username" elementType="HTTPArgument">
+							<boolProp name="HTTPArgument.always_encode">false</boolProp>
+							<stringProp name="Argument.metadata">=</stringProp>
+							<boolProp name="HTTPArgument.use_equals">true</boolProp>
+							<stringProp name="Argument.name">username</stringProp>
+							<stringProp name="Argument.value">${loginUser.username}</stringProp>
+						 </elementProp>
+						<elementProp name="password" elementType="HTTPArgument">
+							<boolProp name="HTTPArgument.always_encode">false</boolProp>
+							<stringProp name="Argument.metadata">=</stringProp>
+							<boolProp name="HTTPArgument.use_equals">true</boolProp>
+							<stringProp name="Argument.name">password</stringProp>
+							<stringProp name="Argument.value">${loginUser.password}</stringProp>
+						 </elementProp>
+					</collectionProp>
+				  </elementProp>
+				  <stringProp name="HTTPSampler.domain"></stringProp>
+				  <stringProp name="HTTPSampler.port"></stringProp>
+				  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+				  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+				  <stringProp name="HTTPSampler.protocol"></stringProp>
+				  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+				  <stringProp name="HTTPSampler.path">/user/login</stringProp>
+				  <stringProp name="HTTPSampler.method">GET</stringProp>
+				  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+				  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+				  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+				  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+				  <stringProp name="HTTPSampler.implementation"></stringProp>
+				  <boolProp name="HTTPSampler.monitor">false</boolProp>
+				  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+				  <stringProp name="TestPlan.comments">loginUser</stringProp>
+			  </HTTPSamplerProxy>
+			  <hashTree>
+			     <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="接口header管理器名称" enabled="true">
+                     <collectionProp name="HeaderManager.headers">
+                     </collectionProp>
+                     <stringProp name="TestPlan.comments">接口header管理器描述</stringProp>
+                 </HeaderManager>
+                 <hashTree/>
+
+			    <!--每个接口断言定义开始-->
+				  <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="Response状态码断言" enabled="true">
+                     <stringProp name="JSON_PATH">$.statusCode</stringProp>
+                     <stringProp name="EXPECTED_VALUE">0</stringProp>
+                     <boolProp name="JSONVALIDATION">true</boolProp>
+                     <boolProp name="EXPECT_NULL">false</boolProp>
+                     <boolProp name="INVERT">false</boolProp>
+                     <boolProp name="ISREGEX">true</boolProp>
+                   </JSONPathAssertion>
+				   <hashTree/>
+				 <!--每个接口断言定义结束-->
+			  </hashTree>
+			<HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Logs out current logged in user session" enabled="true">
+				  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+					 <collectionProp name="Arguments.arguments">
+					</collectionProp>
+				  </elementProp>
+				  <stringProp name="HTTPSampler.domain"></stringProp>
+				  <stringProp name="HTTPSampler.port"></stringProp>
+				  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+				  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+				  <stringProp name="HTTPSampler.protocol"></stringProp>
+				  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+				  <stringProp name="HTTPSampler.path">/user/logout</stringProp>
+				  <stringProp name="HTTPSampler.method">GET</stringProp>
+				  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+				  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+				  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+				  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+				  <stringProp name="HTTPSampler.implementation"></stringProp>
+				  <boolProp name="HTTPSampler.monitor">false</boolProp>
+				  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+				  <stringProp name="TestPlan.comments">logoutUser</stringProp>
+			  </HTTPSamplerProxy>
+			  <hashTree>
+			     <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="接口header管理器名称" enabled="true">
+                     <collectionProp name="HeaderManager.headers">
+                     </collectionProp>
+                     <stringProp name="TestPlan.comments">接口header管理器描述</stringProp>
+                 </HeaderManager>
+                 <hashTree/>
+
+			    <!--每个接口断言定义开始-->
+				  <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="Response状态码断言" enabled="true">
+                     <stringProp name="JSON_PATH">$.statusCode</stringProp>
+                     <stringProp name="EXPECTED_VALUE">0</stringProp>
+                     <boolProp name="JSONVALIDATION">true</boolProp>
+                     <boolProp name="EXPECT_NULL">false</boolProp>
+                     <boolProp name="INVERT">false</boolProp>
+                     <boolProp name="ISREGEX">true</boolProp>
+                   </JSONPathAssertion>
+				   <hashTree/>
+				 <!--每个接口断言定义结束-->
+			  </hashTree>
+			<HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Create user" enabled="true">
+			      <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                    <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                      <collectionProp name="Arguments.arguments">
+                        <elementProp name="" elementType="HTTPArgument">
+                          <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                          <stringProp name="Argument.value">{
+  "firstName" : "firstName",
+  "lastName" : "lastName",
+  "password" : "password",
+  "userStatus" : 6,
+  "phone" : "phone",
+  "id" : 0,
+  "email" : "email",
+  "username" : "username"
+}</stringProp>
+                          <stringProp name="Argument.metadata">=</stringProp>
+                        </elementProp>
+                      </collectionProp>
+                    </elementProp>
+				  <stringProp name="HTTPSampler.domain"></stringProp>
+				  <stringProp name="HTTPSampler.port"></stringProp>
+				  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+				  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+				  <stringProp name="HTTPSampler.protocol"></stringProp>
+				  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+				  <stringProp name="HTTPSampler.path">/user</stringProp>
+				  <stringProp name="HTTPSampler.method">POST</stringProp>
+				  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+				  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+				  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+				  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+				  <stringProp name="HTTPSampler.implementation"></stringProp>
+				  <boolProp name="HTTPSampler.monitor">false</boolProp>
+				  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+				  <stringProp name="TestPlan.comments">createUser</stringProp>
+			  </HTTPSamplerProxy>
+			  <hashTree>
+			     <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="接口header管理器名称" enabled="true">
+                     <collectionProp name="HeaderManager.headers">
+                     </collectionProp>
+                     <stringProp name="TestPlan.comments">接口header管理器描述</stringProp>
+                 </HeaderManager>
+                 <hashTree/>
+
+			    <!--每个接口断言定义开始-->
+				  <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="Response状态码断言" enabled="true">
+                     <stringProp name="JSON_PATH">$.statusCode</stringProp>
+                     <stringProp name="EXPECTED_VALUE">0</stringProp>
+                     <boolProp name="JSONVALIDATION">true</boolProp>
+                     <boolProp name="EXPECT_NULL">false</boolProp>
+                     <boolProp name="INVERT">false</boolProp>
+                     <boolProp name="ISREGEX">true</boolProp>
+                   </JSONPathAssertion>
+				   <hashTree/>
+				 <!--每个接口断言定义结束-->
+			  </hashTree>
+		  </hashTree>
+		  <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="pet" enabled="true">
+            <stringProp name="TestPlan.comments"></stringProp>
+		  </GenericController>
+		  <hashTree>
+		     <!--遍历请求接口-->
+			<HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="uploads an image" enabled="true">
+				  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+					 <collectionProp name="Arguments.arguments">
+					</collectionProp>
+				  </elementProp>
+				  <stringProp name="HTTPSampler.domain"></stringProp>
+				  <stringProp name="HTTPSampler.port"></stringProp>
+				  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+				  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+				  <stringProp name="HTTPSampler.protocol"></stringProp>
+				  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+				  <stringProp name="HTTPSampler.path">/pet/${uploadFile.petId}/uploadImage</stringProp>
+				  <stringProp name="HTTPSampler.method">POST</stringProp>
+				  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+				  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+				  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+				  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+				  <stringProp name="HTTPSampler.implementation"></stringProp>
+				  <boolProp name="HTTPSampler.monitor">false</boolProp>
+				  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+				  <stringProp name="TestPlan.comments">uploadFile</stringProp>
+			  </HTTPSamplerProxy>
+			  <hashTree>
+			     <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="接口header管理器名称" enabled="true">
+                     <collectionProp name="HeaderManager.headers">
+                     </collectionProp>
+                     <stringProp name="TestPlan.comments">接口header管理器描述</stringProp>
+                 </HeaderManager>
+                 <hashTree/>
+
+			    <!--每个接口断言定义开始-->
+				  <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="Response状态码断言" enabled="true">
+                     <stringProp name="JSON_PATH">$.statusCode</stringProp>
+                     <stringProp name="EXPECTED_VALUE">0</stringProp>
+                     <boolProp name="JSONVALIDATION">true</boolProp>
+                     <boolProp name="EXPECT_NULL">false</boolProp>
+                     <boolProp name="INVERT">false</boolProp>
+                     <boolProp name="ISREGEX">true</boolProp>
+                   </JSONPathAssertion>
+				   <hashTree/>
+				 <!--每个接口断言定义结束-->
+			  </hashTree>
+			<HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Add a new pet to the store" enabled="true">
+			      <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                    <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                      <collectionProp name="Arguments.arguments">
+                        <elementProp name="" elementType="HTTPArgument">
+                          <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                          <stringProp name="Argument.value">{
+  "photoUrls" : [ "photoUrls", "photoUrls" ],
+  "name" : "doggie",
+  "id" : 0,
+  "category" : {
+    "name" : "name",
+    "id" : 6
+  },
+  "tags" : [ {
+    "name" : "name",
+    "id" : 1
+  }, {
+    "name" : "name",
+    "id" : 1
+  } ],
+  "status" : "available"
+}</stringProp>
+                          <stringProp name="Argument.metadata">=</stringProp>
+                        </elementProp>
+                      </collectionProp>
+                    </elementProp>
+				  <stringProp name="HTTPSampler.domain"></stringProp>
+				  <stringProp name="HTTPSampler.port"></stringProp>
+				  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+				  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+				  <stringProp name="HTTPSampler.protocol"></stringProp>
+				  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+				  <stringProp name="HTTPSampler.path">/pet</stringProp>
+				  <stringProp name="HTTPSampler.method">POST</stringProp>
+				  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+				  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+				  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+				  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+				  <stringProp name="HTTPSampler.implementation"></stringProp>
+				  <boolProp name="HTTPSampler.monitor">false</boolProp>
+				  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+				  <stringProp name="TestPlan.comments">addPet</stringProp>
+			  </HTTPSamplerProxy>
+			  <hashTree>
+			     <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="接口header管理器名称" enabled="true">
+                     <collectionProp name="HeaderManager.headers">
+                     </collectionProp>
+                     <stringProp name="TestPlan.comments">接口header管理器描述</stringProp>
+                 </HeaderManager>
+                 <hashTree/>
+
+			    <!--每个接口断言定义开始-->
+				  <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="Response状态码断言" enabled="true">
+                     <stringProp name="JSON_PATH">$.statusCode</stringProp>
+                     <stringProp name="EXPECTED_VALUE">0</stringProp>
+                     <boolProp name="JSONVALIDATION">true</boolProp>
+                     <boolProp name="EXPECT_NULL">false</boolProp>
+                     <boolProp name="INVERT">false</boolProp>
+                     <boolProp name="ISREGEX">true</boolProp>
+                   </JSONPathAssertion>
+				   <hashTree/>
+				 <!--每个接口断言定义结束-->
+			  </hashTree>
+			<HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Finds Pets by status" enabled="true">
+				  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+					 <collectionProp name="Arguments.arguments">
+						<elementProp name="status" elementType="HTTPArgument">
+							<boolProp name="HTTPArgument.always_encode">false</boolProp>
+							<stringProp name="Argument.metadata">=</stringProp>
+							<boolProp name="HTTPArgument.use_equals">true</boolProp>
+							<stringProp name="Argument.name">status</stringProp>
+							<stringProp name="Argument.value">${findPetsByStatus.status}</stringProp>
+						 </elementProp>
+					</collectionProp>
+				  </elementProp>
+				  <stringProp name="HTTPSampler.domain"></stringProp>
+				  <stringProp name="HTTPSampler.port"></stringProp>
+				  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+				  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+				  <stringProp name="HTTPSampler.protocol"></stringProp>
+				  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+				  <stringProp name="HTTPSampler.path">/pet/findByStatus</stringProp>
+				  <stringProp name="HTTPSampler.method">GET</stringProp>
+				  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+				  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+				  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+				  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+				  <stringProp name="HTTPSampler.implementation"></stringProp>
+				  <boolProp name="HTTPSampler.monitor">false</boolProp>
+				  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+				  <stringProp name="TestPlan.comments">findPetsByStatus</stringProp>
+			  </HTTPSamplerProxy>
+			  <hashTree>
+			     <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="接口header管理器名称" enabled="true">
+                     <collectionProp name="HeaderManager.headers">
+                     </collectionProp>
+                     <stringProp name="TestPlan.comments">接口header管理器描述</stringProp>
+                 </HeaderManager>
+                 <hashTree/>
+
+			    <!--每个接口断言定义开始-->
+				  <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="Response状态码断言" enabled="true">
+                     <stringProp name="JSON_PATH">$.statusCode</stringProp>
+                     <stringProp name="EXPECTED_VALUE">0</stringProp>
+                     <boolProp name="JSONVALIDATION">true</boolProp>
+                     <boolProp name="EXPECT_NULL">false</boolProp>
+                     <boolProp name="INVERT">false</boolProp>
+                     <boolProp name="ISREGEX">true</boolProp>
+                   </JSONPathAssertion>
+				   <hashTree/>
+				 <!--每个接口断言定义结束-->
+			  </hashTree>
+			<HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Finds Pets by tags" enabled="true">
+				  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+					 <collectionProp name="Arguments.arguments">
+						<elementProp name="tags" elementType="HTTPArgument">
+							<boolProp name="HTTPArgument.always_encode">false</boolProp>
+							<stringProp name="Argument.metadata">=</stringProp>
+							<boolProp name="HTTPArgument.use_equals">true</boolProp>
+							<stringProp name="Argument.name">tags</stringProp>
+							<stringProp name="Argument.value">${findPetsByTags.tags}</stringProp>
+						 </elementProp>
+					</collectionProp>
+				  </elementProp>
+				  <stringProp name="HTTPSampler.domain"></stringProp>
+				  <stringProp name="HTTPSampler.port"></stringProp>
+				  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+				  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+				  <stringProp name="HTTPSampler.protocol"></stringProp>
+				  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+				  <stringProp name="HTTPSampler.path">/pet/findByTags</stringProp>
+				  <stringProp name="HTTPSampler.method">GET</stringProp>
+				  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+				  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+				  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+				  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+				  <stringProp name="HTTPSampler.implementation"></stringProp>
+				  <boolProp name="HTTPSampler.monitor">false</boolProp>
+				  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+				  <stringProp name="TestPlan.comments">findPetsByTags</stringProp>
+			  </HTTPSamplerProxy>
+			  <hashTree>
+			     <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="接口header管理器名称" enabled="true">
+                     <collectionProp name="HeaderManager.headers">
+                     </collectionProp>
+                     <stringProp name="TestPlan.comments">接口header管理器描述</stringProp>
+                 </HeaderManager>
+                 <hashTree/>
+
+			    <!--每个接口断言定义开始-->
+				  <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="Response状态码断言" enabled="true">
+                     <stringProp name="JSON_PATH">$.statusCode</stringProp>
+                     <stringProp name="EXPECTED_VALUE">0</stringProp>
+                     <boolProp name="JSONVALIDATION">true</boolProp>
+                     <boolProp name="EXPECT_NULL">false</boolProp>
+                     <boolProp name="INVERT">false</boolProp>
+                     <boolProp name="ISREGEX">true</boolProp>
+                   </JSONPathAssertion>
+				   <hashTree/>
+				 <!--每个接口断言定义结束-->
+			  </hashTree>
+			<HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Find pet by ID" enabled="true">
+				  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+					 <collectionProp name="Arguments.arguments">
+					</collectionProp>
+				  </elementProp>
+				  <stringProp name="HTTPSampler.domain"></stringProp>
+				  <stringProp name="HTTPSampler.port"></stringProp>
+				  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+				  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+				  <stringProp name="HTTPSampler.protocol"></stringProp>
+				  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+				  <stringProp name="HTTPSampler.path">/pet/${getPetById.petId}</stringProp>
+				  <stringProp name="HTTPSampler.method">GET</stringProp>
+				  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+				  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+				  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+				  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+				  <stringProp name="HTTPSampler.implementation"></stringProp>
+				  <boolProp name="HTTPSampler.monitor">false</boolProp>
+				  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+				  <stringProp name="TestPlan.comments">getPetById</stringProp>
+			  </HTTPSamplerProxy>
+			  <hashTree>
+			     <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="接口header管理器名称" enabled="true">
+                     <collectionProp name="HeaderManager.headers">
+                     </collectionProp>
+                     <stringProp name="TestPlan.comments">接口header管理器描述</stringProp>
+                 </HeaderManager>
+                 <hashTree/>
+
+			    <!--每个接口断言定义开始-->
+				  <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="Response状态码断言" enabled="true">
+                     <stringProp name="JSON_PATH">$.statusCode</stringProp>
+                     <stringProp name="EXPECTED_VALUE">0</stringProp>
+                     <boolProp name="JSONVALIDATION">true</boolProp>
+                     <boolProp name="EXPECT_NULL">false</boolProp>
+                     <boolProp name="INVERT">false</boolProp>
+                     <boolProp name="ISREGEX">true</boolProp>
+                   </JSONPathAssertion>
+				   <hashTree/>
+				 <!--每个接口断言定义结束-->
+			  </hashTree>
+		  </hashTree>
+	   </hashTree>
+	   
+	 <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="察看结果树" enabled="true">
+		<boolProp name="ResultCollector.error_logging">false</boolProp>
+		 <objProp>
+		   <name>saveConfig</name>
+		   <value class="SampleSaveConfiguration">
+			  <time>true</time>
+			  <latency>true</latency>
+			  <timestamp>true</timestamp>
+			  <success>true</success>
+			  <label>true</label>
+			  <code>true</code>
+			  <message>true</message>
+			  <threadName>true</threadName>
+			  <dataType>true</dataType>
+			  <encoding>false</encoding>
+			  <assertions>true</assertions>
+			  <subresults>true</subresults>
+			  <responseData>false</responseData>
+			  <samplerData>false</samplerData>
+			  <xml>false</xml>
+			  <fieldNames>true</fieldNames>
+			  <responseHeaders>false</responseHeaders>
+			  <requestHeaders>false</requestHeaders>
+			  <responseDataOnError>false</responseDataOnError>
+			  <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+			  <assertionsResultsToSave>0</assertionsResultsToSave>
+			  <bytes>true</bytes>
+			  <sentBytes>true</sentBytes>
+			  <url>true</url>
+			  <threadCounts>true</threadCounts>
+			  <idleTime>true</idleTime>
+			  <connectTime>true</connectTime>
+			</value>
+		  </objProp>
+		  <stringProp name="filename"></stringProp>
+	  </ResultCollector>
+	  <hashTree/>
+    </hashTree>
+	</hashTree>
+	<WorkBench guiclass="WorkBenchGui" testclass="WorkBench" testname="工作台" enabled="true">
+      <boolProp name="WorkBench.save">true</boolProp>
+    </WorkBench>
+    <hashTree/>
+  </hashTree>
+  <!--测试计划结束-->
+</jmeterTestPlan>

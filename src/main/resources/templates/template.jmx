@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.1.1 r1855137">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="测试计划" enabled="true">
+      <stringProp name="TestPlan.comments">${description!}</stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+
+	<!--线程组开始-->
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="线程组" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="循环控制器" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1603853091000</longProp>
+        <longProp name="ThreadGroup.end_time">1603853091000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+	  
+	  <hashTree>
+	    <!--网关环境开始-->
+		<Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="网关环境" enabled="true">
+		  <collectionProp name="Arguments.arguments">
+			<elementProp name="host" elementType="Argument">
+			  <stringProp name="Argument.name">host</stringProp>
+			  <stringProp name="Argument.metadata">=</stringProp>
+			  <stringProp name="Argument.value">${host!}</stringProp>
+			</elementProp>
+
+			<elementProp name="port" elementType="Argument">
+              <stringProp name="Argument.name">port</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              <stringProp name="Argument.value">${port?c}</stringProp>
+
+            </elementProp>
+
+		  </collectionProp>
+		</Arguments>
+		<hashTree/>
+		
+		<!--请求头开始-->
+		<HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP信息头管理器" enabled="true">
+		  <collectionProp name="HeaderManager.headers">
+			<elementProp name="" elementType="Header">
+			  <stringProp name="Header.name">Content-Type</stringProp>
+			  <stringProp name="Header.value">application/json</stringProp>
+			</elementProp>
+		  </collectionProp>
+		</HeaderManager>
+		<hashTree/>
+		<!--HTTP请求默认值-->
+		<ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP请求默认值" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${r"${host}"}</stringProp>
+          <stringProp name="HTTPSampler.port">${r"${port}"}</stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path"></stringProp>
+          <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </ConfigTestElement>
+        <hashTree/>
+		<!--服务逻辑控制器-->
+		<GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="${title}" enabled="true" />
+        <!--需要循环遍历controller，每个controller生成一个控制器-->
+		<hashTree>
+		<#list tagList as tag>
+		  <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="${tag.name}" enabled="true">
+            <stringProp name="TestPlan.comments"></stringProp>
+		  </GenericController>
+		  <hashTree>
+		     <!--遍历请求接口-->
+			<#list tag.requestNodes as req>
+			<HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="${req.operationName}" enabled="true">
+			      <#if (req.requestBody)??>
+			      <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                    <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                      <collectionProp name="Arguments.arguments">
+                        <elementProp name="" elementType="HTTPArgument">
+                          <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                          <stringProp name="Argument.value">${req.requestBody!}</stringProp>
+                          <stringProp name="Argument.metadata">=</stringProp>
+                        </elementProp>
+                      </collectionProp>
+                    </elementProp>
+                 <#else>
+				  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+					 <collectionProp name="Arguments.arguments">
+						<#list req.queryParamNodes as qp>
+						<elementProp name="${qp.paramName}" elementType="HTTPArgument">
+							<boolProp name="HTTPArgument.always_encode">false</boolProp>
+							<stringProp name="Argument.metadata">=</stringProp>
+							<boolProp name="HTTPArgument.use_equals">true</boolProp>
+							<stringProp name="Argument.name">${qp.paramName}</stringProp>
+							<stringProp name="Argument.value">${qp.paramValue}</stringProp>
+						 </elementProp>
+						</#list>
+					</collectionProp>
+				  </elementProp>
+                 </#if>
+				  <stringProp name="HTTPSampler.domain"></stringProp>
+				  <stringProp name="HTTPSampler.port"></stringProp>
+				  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+				  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+				  <stringProp name="HTTPSampler.protocol"></stringProp>
+				  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+				  <stringProp name="HTTPSampler.path">${req.requestUrl}</stringProp>
+				  <stringProp name="HTTPSampler.method">${req.httpMethod}</stringProp>
+				  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+				  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+				  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+				  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+				  <stringProp name="HTTPSampler.implementation"></stringProp>
+				  <boolProp name="HTTPSampler.monitor">false</boolProp>
+				  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+				  <stringProp name="TestPlan.comments">${req.operationId}</stringProp>
+			  </HTTPSamplerProxy>
+			             <hashTree>
+                           <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="响应断言" enabled="true">
+                             <collectionProp name="Asserion.test_strings">
+                               <stringProp name="49586">200</stringProp>
+                             </collectionProp>
+                             <stringProp name="Assertion.custom_message"></stringProp>
+                             <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+                             <boolProp name="Assertion.assume_success">false</boolProp>
+                             <intProp name="Assertion.test_type">1</intProp>
+                           </ResponseAssertion>
+                           <hashTree/>
+                         </hashTree>
+			  </#list>
+		  </hashTree>
+	   </#list>
+	   </hashTree>
+
+	 <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="察看结果树" enabled="true">
+		<boolProp name="ResultCollector.error_logging">false</boolProp>
+		 <objProp>
+		   <name>saveConfig</name>
+		   <value class="SampleSaveConfiguration">
+			  <time>true</time>
+			  <latency>true</latency>
+			  <timestamp>true</timestamp>
+			  <success>true</success>
+			  <label>true</label>
+			  <code>true</code>
+			  <message>true</message>
+			  <threadName>true</threadName>
+			  <dataType>true</dataType>
+			  <encoding>false</encoding>
+			  <assertions>true</assertions>
+			  <subresults>true</subresults>
+			  <responseData>false</responseData>
+			  <samplerData>false</samplerData>
+			  <xml>false</xml>
+			  <fieldNames>true</fieldNames>
+			  <responseHeaders>false</responseHeaders>
+			  <requestHeaders>false</requestHeaders>
+			  <responseDataOnError>false</responseDataOnError>
+			  <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+			  <assertionsResultsToSave>0</assertionsResultsToSave>
+			  <bytes>true</bytes>
+			  <sentBytes>true</sentBytes>
+			  <url>true</url>
+			  <threadCounts>true</threadCounts>
+			  <idleTime>true</idleTime>
+			  <connectTime>true</connectTime>
+			</value>
+		  </objProp>
+		  <stringProp name="filename"></stringProp>
+	  </ResultCollector>
+	  <hashTree/>
+    </hashTree>
+	</hashTree>
+	<WorkBench guiclass="WorkBenchGui" testclass="WorkBench" testname="工作台" enabled="true">
+      <boolProp name="WorkBench.save">true</boolProp>
+    </WorkBench>
+    <hashTree/>
+  </hashTree>
+  <!--测试计划结束-->
+</jmeterTestPlan>
